@@ -1,0 +1,118 @@
+:root {
+  --bg: #f5f2ec;
+  --surface: #ffffff;
+  --ink: #1d1b18;
+  --muted: #6b655c;
+  --line: #e2dcd1;
+  --accent: #e2551f;
+  --accent-ink: #ffffff;
+  --radius: 14px;
+  --wrap: 1120px;
+  --font-head: "Unbounded", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161513;
+    --surface: #201e1b;
+    --ink: #eeeae3;
+    --muted: #a39c90;
+    --line: #34312c;
+    --accent: #f06a35;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 var(--font-body);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.15; letter-spacing: -0.01em; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+
+.site-header { border-bottom: 1px solid var(--line); }
+.header-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.logo { font-family: var(--font-head); font-weight: 700; text-decoration: none; font-size: 15px; }
+.header-nav { display: flex; align-items: center; gap: 20px; font-size: 15px; }
+.header-nav a:not(.btn) { text-decoration: none; color: var(--muted); }
+.header-nav a:not(.btn):hover { color: var(--ink); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 22px; border-radius: 999px;
+  background: var(--accent); color: var(--accent-ink);
+  font-weight: 600; text-decoration: none; border: 0;
+}
+.btn:hover { filter: brightness(1.07); }
+.btn-small { padding: 8px 16px; font-size: 14px; }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+
+.site-footer { border-top: 1px solid var(--line); margin-top: 96px; color: var(--muted); font-size: 14px; }
+.footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-block: 28px; }
+
+.footer-links { display: flex; gap: 16px; }
+.empty { color: var(--muted); padding: 48px 0; text-align: center; border: 1px dashed var(--line); border-radius: var(--radius); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.tags li { font-size: 13px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; }
+
+/* Главная */
+.hero { padding: 72px 0 40px; }
+.hero h1 { font-size: clamp(30px, 5vw, 52px); margin: 0 0 16px; max-width: 16ch; }
+.hero p { color: var(--muted); font-size: 18px; max-width: 52ch; margin: 0 0 28px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+.card { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .15s ease; }
+.card:hover { transform: translateY(-3px); }
+.card img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; background: var(--line); }
+.card-body { padding: 16px 18px 20px; }
+.card h2 { font-size: 18px; margin: 0 0 6px; }
+.card p { margin: 0 0 12px; color: var(--muted); font-size: 15px; }
+
+/* Страница модели */
+.model-head { padding: 48px 0 24px; }
+.back { color: var(--muted); text-decoration: none; font-size: 14px; }
+.model-head h1 { font-size: clamp(28px, 4.5vw, 46px); margin: 12px 0; }
+.lead { font-size: 19px; color: var(--muted); max-width: 60ch; margin: 0 0 16px; }
+.cover { border-radius: var(--radius); overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+.cover img { width: 100%; max-height: 72vh; object-fit: contain; }
+
+.model-layout { display: grid; gap: 40px; grid-template-columns: minmax(0, 1fr); margin-top: 40px; }
+@media (min-width: 900px) { .model-layout { grid-template-columns: minmax(0, 1fr) 300px; } }
+.prose { max-width: 68ch; }
+.prose h2 { font-size: 22px; margin-top: 2em; }
+.prose img { border-radius: 10px; }
+
+.aside { display: flex; flex-direction: column; gap: 16px; align-self: start; }
+@media (min-width: 900px) { .aside { position: sticky; top: 24px; } }
+.specs { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; margin: 0; }
+.specs div { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.specs div:last-child { border-bottom: 0; }
+.specs dt { color: var(--muted); }
+.specs dd { margin: 0; text-align: right; font-weight: 500; }
+
+.section-title { font-size: 22px; margin: 56px 0 20px; }
+.gallery { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.gallery button { all: unset; cursor: zoom-in; position: relative; border-radius: 10px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+.gallery button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.gallery img { aspect-ratio: 1; width: 100%; object-fit: cover; }
+.badge { position: absolute; left: 8px; top: 8px; font-size: 12px; background: rgb(0 0 0 / .55); color: #fff; padding: 1px 8px; border-radius: 999px; }
+
+.video { border-radius: var(--radius); overflow: hidden; background: #000; aspect-ratio: 16 / 9; }
+.video video, .video iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.lightbox { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 96vh; }
+.lightbox::backdrop { background: rgb(0 0 0 / .85); }
+.lightbox img { max-width: 96vw; max-height: 92vh; object-fit: contain; }
+
+.cta { margin-top: 72px; padding: 36px 28px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+.cta h2 { margin: 0 0 6px; font-size: 22px; }
+.cta p { margin: 0; color: var(--muted); }

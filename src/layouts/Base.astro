@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import { SITE } from "../config";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+const { title, description = SITE.description, image } = Astro.props;
+const fullTitle = title ? `${title} — ${SITE.title}` : SITE.title;
+const base = import.meta.env.BASE_URL;
+const ogImage = image ? new URL(image, Astro.site).href : undefined;
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-row">
+        <a class="logo" href={base}>{SITE.title}</a>
+        <nav class="header-nav">
+          {SITE.channel && <a href={SITE.channel} target="_blank" rel="noopener">Канал</a>}
+          {SITE.contact && <a class="btn btn-small" href={SITE.contact} target="_blank" rel="noopener">Связаться</a>}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <span>© {new Date().getFullYear()} {SITE.title}</span>
+        <span class="footer-links">
+          {SITE.channel && <a href={SITE.channel} target="_blank" rel="noopener">Telegram-канал</a>}
+          {SITE.contact && <a href={SITE.contact} target="_blank" rel="noopener">Написать мне</a>}
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
