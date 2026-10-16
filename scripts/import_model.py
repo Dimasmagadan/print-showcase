@@ -1,6 +1,7 @@
 """Импорт модели из основного репо 3dprint в витрину.
 
     npm run import -- robot_cat --photos ~/Pictures/robot-cat
+    npm run import -- animal_puzzle --extra animal_puzzle_tray   # две модели на одной странице
 
 Берёт из ../3dprint/exports/<id>/ только meta.json, рендеры preview/ и размеры
 из STL. Фото пережимаются (≤2400 px, JPEG) и теряют EXIF — включая геометку.
@@ -28,12 +29,13 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SRC = ROOT.parent / "3dprint"
+SKIP_RENDERS = ("checkpoint",)  # служебные кадры проверок, не для витрины
 PHOTO_EXT = {".jpg", ".jpeg", ".png", ".heic", ".heif", ".webp"}
 MAX_SIDE = 2400
 
 
-def stl_size(path: Path) -> tuple[float, float, float] | None:
-    """Габариты бинарного STL без сторонних зависимостей."""
+def stl_bounds(path: Path) -> tuple[list[float], list[float]] | None:
+    """Границы бинарного STL без сторонних зависимостей."""
     data = path.read_bytes()
     if len(data) < 84:
         return None
@@ -49,7 +51,26 @@ def stl_size(path: Path) -> tuple[float, float, float] | None:
             for a in range(3):
                 lo[a] = min(lo[a], xyz[a])
                 hi[a] = max(hi[a], xyz[a])
-    return tuple(hi[a] - lo[a] for a in range(3))
+    return lo, hi
+
+
+def model_size(export: Path, objects: list[dict]) -> tuple[float, ...] | None:
+    """Общий габарит всех деталей в их координатах из экспорта.
+
+    Если детали в STL разложены для печати, а не собраны, число будет
+    габаритом раскладки — его стоит проверить глазами.
+    """
+    lo = [float("inf")] * 3
+    hi = [float("-inf")] * 3
+    found = False
+    for o in objects:
+        stl = export / o["file"]
+        b = stl_bounds(stl) if stl.suffix.lower() == ".stl" and stl.exists() else None
+        if b:
+            found = True
+            lo = [min(x, y) for x, y in zip(lo, b[0])]
+            hi = [max(x, y) for x, y in zip(hi, b[1])]
+    return tuple(h - l for l, h in zip(lo, hi)) if found else None
 
 
 def fmt_mm(v: float) -> str:
@@ -72,6 +93,7 @@ def main() -> int:
     p.add_argument("model_id", help="папка в exports/, например robot_cat")
     p.add_argument("--photos", type=Path, help="папка с фотографиями напечатанной модели")
     p.add_argument("--src", type=Path, default=DEFAULT_SRC, help=f"основной репо (по умолчанию {DEFAULT_SRC})")
+    p.add_argument("--extra", nargs="*", default=[], help="доп. модели из exports/ на ту же страницу (их рендеры)")
     p.add_argument("--force", action="store_true", help="перезаписать index.md")
     args = p.parse_args()
 
@@ -97,10 +119,17 @@ def main() -> int:
             gallery.append((f"./photos/{dst.name}", "photo"))
         print(f"фото: {len(files)} → {out / 'photos'}")
 
-    for f in sorted((export / "preview").glob("*.png")):
-        dst = out / "renders" / f.name
-        shutil.copy2(f, dst)
-        gallery.append((f"./renders/{f.name}", "render"))
+    for src_id, prefix in [(args.model_id, "")] + [(e, f"{e}-") for e in args.extra]:
+        preview = args.src / "exports" / src_id / "preview"
+        if not preview.is_dir():
+            print(f"нет {preview}", file=sys.stderr)
+            return 1
+        for f in sorted(preview.glob("*.png")):
+            if f.name.startswith(SKIP_RENDERS):
+                continue
+            name = prefix + f.name
+            shutil.copy2(f, out / "renders" / name)
+            gallery.append((f"./renders/{name}", "render"))
 
     photos = [g for g, k in gallery if k == "photo"]
     renders = [g for g, k in gallery if k == "render"]
@@ -126,15 +155,15 @@ def main() -> int:
     if material:
         specs.append(f"  material: {material}")
     if objects:
-        stl = export / objects[0]["file"]
-        size = stl_size(stl) if stl.suffix.lower() == ".stl" and stl.exists() else None
+        size = model_size(export, objects)
         if size:
             specs.append(f"  size: {yaml_str(' × '.join(fmt_mm(v) for v in size) + ' мм')}")
         parts = sum(o.get("qty", 1) for o in objects)
         if parts > 1:
             specs.append(f"  parts: {parts}")
-    if printing.get("layer_mm"):
-        specs.append(f"  layer: {yaml_str(str(printing['layer_mm']).replace('.', ',') + ' мм')}")
+    layer = printing.get("layer_mm") or printing.get("layer_height_mm")
+    if layer:
+        specs.append(f"  layer: {yaml_str(str(layer).replace('.', ',') + ' мм')}")
 
     front = f"""---
 title: {yaml_str(meta['title'])}

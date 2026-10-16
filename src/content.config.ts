@@ -12,6 +12,8 @@ const models = defineCollection({
       tags: z.array(z.string()).default([]),
       cover: image(),
       coverAlt: z.string(),
+      // contain — показать картинку целиком (широкие рендеры); cover — обрезать под карточку
+      coverFit: z.enum(["cover", "contain"]).default("cover"),
       gallery: z
         .array(
           z.object({

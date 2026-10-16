@@ -73,11 +73,11 @@ const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, ""
 
     {data.gallery.length > 0 && (
       <section>
-        <h2 class="section-title">Фото</h2>
+        <h2 class="section-title">{data.gallery.some((g) => g.kind === "photo") ? "Фото" : "Рендеры"}</h2>
         <div class="gallery">
           {data.gallery.map((g, i) => (
             <button type="button" data-full={full[i].src} data-alt={g.alt} aria-label={`Открыть: ${g.alt}`}>
-              <Image src={g.src} alt={g.alt} widths={[300, 600]} sizes="(max-width: 600px) 100vw, 270px" />
+              <Image class={`fit-${g.kind === "render" ? "contain" : "cover"}`} src={g.src} alt={g.alt} widths={[300, 600]} sizes="(max-width: 600px) 100vw, 270px" />
               {g.kind === "render" && <span class="badge">рендер</span>}
             </button>
           ))}

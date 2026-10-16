@@ -73,6 +73,7 @@ h1, h2, h3 { font-family: var(--font-head); line-height: 1.15; letter-spacing: -
 .card { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform .15s ease; }
 .card:hover { transform: translateY(-3px); }
 .card img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; background: var(--line); }
+.card img.fit-contain, .gallery img.fit-contain { object-fit: contain; background: #fff; }
 .card-body { padding: 16px 18px 20px; }
 .card h2 { font-size: 18px; margin: 0 0 6px; }
 .card p { margin: 0 0 12px; color: var(--muted); font-size: 15px; }

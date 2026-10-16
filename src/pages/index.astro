@@ -24,7 +24,7 @@ const base = import.meta.env.BASE_URL;
     <div class="grid">
       {models.map((m) => (
         <a class="card" href={`${base}models/${m.id}/`}>
-          <Image src={m.data.cover} alt={m.data.coverAlt} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 360px" />
+          <Image class={`fit-${m.data.coverFit}`} src={m.data.cover} alt={m.data.coverAlt} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 360px" />
           <div class="card-body">
             <h2>{m.data.title}</h2>
             <p>{m.data.summary}</p>
