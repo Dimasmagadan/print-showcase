@@ -17,6 +17,7 @@ specs:
   size: "197 × 114 × 60 мм"
   parts: 7
   layer: "0,2 мм"
+tgPost: https://t.me/printshowcase/5
 draft: false
 ---
 

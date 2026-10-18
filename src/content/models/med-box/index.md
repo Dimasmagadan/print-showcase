@@ -22,6 +22,7 @@ specs:
   material: PETG
   size: "126 × 84 × 42 мм"
   layer: "0,2 мм"
+tgPost: https://t.me/printshowcase/4
 draft: false
 ---
 

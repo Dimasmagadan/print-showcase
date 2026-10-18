@@ -15,7 +15,7 @@ const { data } = model;
 const { Content } = await render(model);
 const base = import.meta.env.BASE_URL;
 
-const og = await getImage({ src: data.cover, width: 1200, format: "jpeg" });
+const og = `${base}og/${model.id}.jpg`;
 const full = await Promise.all(data.gallery.map((g) => getImage({ src: g.src, width: 2000 })));
 
 const specLabels: [keyof typeof data.specs, string][] = [
@@ -27,9 +27,11 @@ const specLabels: [keyof typeof data.specs, string][] = [
 ];
 const specs = specLabels.filter(([k]) => data.specs[k] !== undefined);
 const embed = data.video ? videoEmbed(data.video) : null;
+// https://t.me/<канал>/<id> → "<канал>/<id>" для виджета обсуждений
+const tgDiscussion = data.tgPost?.match(/t\.me\/([^/]+\/\d+)/)?.[1];
 const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, "")}` : null;
 ---
-<Base title={data.title} description={data.summary} image={og.src}>
+<Base title={data.title} description={data.summary} image={og} imageAlt={data.coverAlt} type="article">
   <article class="wrap">
     <header class="model-head">
       <a class="back" href={base}>← Все модели</a>
@@ -81,6 +83,15 @@ const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, ""
               {g.kind === "render" && <span class="badge">рендер</span>}
             </button>
           ))}
+        </div>
+      </section>
+    )}
+
+    {tgDiscussion && (
+      <section>
+        <h2 class="section-title">Комментарии</h2>
+        <div class="comments">
+          <script is:inline async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion={tgDiscussion} data-comments-limit="10"></script>
         </div>
       </section>
     )}

@@ -3,6 +3,6 @@
 export const SITE = {
   title: "Print Showcase",
   description: "Модели, которые я придумал, смоделировал и напечатал на 3D-принтере.",
-  channel: "", // https://t.me/<канал>
+  channel: "https://t.me/printshowcase", // https://t.me/<канал>
   contact: "", // https://t.me/<username> — кнопка «Связаться»
 };

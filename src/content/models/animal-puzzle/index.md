@@ -33,6 +33,7 @@ specs:
   size: "200 × 96 × 10 мм"
   parts: 5
   layer: "0,2 мм"
+tgPost: https://t.me/printshowcase/2
 draft: false
 ---
 
