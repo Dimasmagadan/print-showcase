@@ -3,33 +3,41 @@ import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
 import { SITE } from "../config";
 import { getModels } from "../lib";
+import hero from "../assets/hero/bambu-p2s-hero-v1.png";
 
 const models = await getModels();
 const base = import.meta.env.BASE_URL;
 ---
-<Base>
-  <section class="wrap hero">
-    <h1>Придумываю и печатаю вещи</h1>
-    <p>{SITE.description} Здесь — как появилась каждая: идея, моделирование, печать и что пошло не так.</p>
-    {(SITE.contact || SITE.channel) && (
+<Base home>
+  <section class="home-hero" aria-labelledby="hero-title">
+    <div class="hero-visual">
+      <Image src={hero} alt="Иллюстрация 3D-принтера Bambu Lab P2S с блоком AMS в тёмной мастерской" widths={[640, 960, 1280, 1672]} sizes="(min-width: 1024px) 900px, 100vw" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="wrap hero-copy">
+      <p class="hero-eyebrow">Авторская 3D-печать</p>
+      <h1 id="hero-title">Придумываю и печатаю вещи</h1>
+      <p class="hero-description">{SITE.description} Здесь — как появилась каждая: идея, моделирование, печать и что пошло не так.</p>
       <div class="hero-actions">
-        {SITE.contact && <a class="btn" href={SITE.contact} target="_blank" rel="noopener">Связаться</a>}
+        <a class="btn" href={`${base}#models`}>Смотреть модели</a>
         {SITE.channel && <a class="btn btn-ghost" href={SITE.channel} target="_blank" rel="noopener">Telegram-канал</a>}
       </div>
-    )}
+    </div>
   </section>
 
-  <section class="wrap">
+  <section class="wrap home-models" id="models" aria-labelledby="models-title">
+    <div class="catalog-heading">
+      <h2 id="models-title">Все модели</h2>
+      <p>Всего: {models.length}</p>
+    </div>
     {models.length === 0 && <p class="empty">Первые модели скоро появятся.</p>}
-    <div class="grid">
+    <div class="model-grid">
       {models.map((m) => (
-        <a class="card" href={`${base}models/${m.id}/`}>
-          <Image class={`fit-${m.data.coverFit}`} src={m.data.cover} alt={m.data.coverAlt} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 360px" />
-          <div class="card-body">
-            <h2>{m.data.title}</h2>
-            <p>{m.data.summary}</p>
-            <ul class="tags">{m.data.tags.map((t) => <li>{t}</li>)}</ul>
+        <a class="model-card" href={`${base}models/${m.id}/`}>
+          <div class="model-card-image">
+            <Image class={`fit-${m.data.coverFit}`} src={m.data.cover} alt={m.data.coverAlt} widths={[320, 480, 640]} sizes="(max-width: 767px) min(78vw, 320px), (max-width: 1023px) calc((100vw - 96px) / 3), (max-width: 1440px) calc((100vw - 156px) / 4), 321px" loading="lazy" />
           </div>
+          <h3>{m.data.title}</h3>
+          <p>{[m.data.specs.material, m.data.tags[0]].filter(Boolean).join(" · ")}</p>
         </a>
       ))}
     </div>

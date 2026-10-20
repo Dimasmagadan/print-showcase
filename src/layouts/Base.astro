@@ -3,13 +3,14 @@ import "../styles/global.css";
 import { SITE } from "../config";
 
 interface Props {
+  home?: boolean;
   title?: string;
   description?: string;
   image?: string;
   imageAlt?: string;
   type?: "website" | "article";
 }
-const { title, description = SITE.description, image, imageAlt, type = "website" } = Astro.props;
+const { home = false, title, description = SITE.description, image, imageAlt, type = "website" } = Astro.props;
 const fullTitle = title ? `${title} — ${SITE.title}` : SITE.title;
 const base = import.meta.env.BASE_URL;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -39,20 +40,22 @@ const ogImage = image ? new URL(image, Astro.site).href : undefined;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     />
   </head>
   <body>
-    <header class="site-header">
+    <a class="skip-link" href="#main">Перейти к содержимому</a>
+    <header class:list={["site-header", { "site-header-home": home }]}>
       <div class="wrap header-row">
         <a class="logo" href={base}>{SITE.title}</a>
-        <nav class="header-nav">
-          {SITE.channel && <a href={SITE.channel} target="_blank" rel="noopener">Канал</a>}
+        <nav class="header-nav" aria-label="Основная навигация">
+          <a href={`${base}#models`}>Модели</a>
+          {SITE.channel && <a href={SITE.channel} target="_blank" rel="noopener">Telegram</a>}
           {SITE.contact && <a class="btn btn-small" href={SITE.contact} target="_blank" rel="noopener">Связаться</a>}
         </nav>
       </div>
     </header>
-    <main>
+    <main id="main">
       <slot />
     </main>
     <footer class="site-footer">
