@@ -12,6 +12,9 @@ gallery:
   - src: ./photos/01.jpg
     alt: "Напечатанная голова робота-кота"
     kind: photo
+  - src: ./photos/03.jpg
+    alt: "Референс: робот-кот из раскраски, по которому сделана модель"
+    kind: photo
   - src: ./renders/assembly_front.png
     alt: "Робот-кот в сборе, вид спереди: голова, корпус с рамкой на животе и ноги"
     kind: render
