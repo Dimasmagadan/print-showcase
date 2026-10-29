@@ -1,0 +1,10 @@
+{
+  "root": "/tmp/robot-cat-redesign-prefixed-host/print-showcase",
+  "base": "/print-showcase/",
+  "frames": 85,
+  "frameBytes": 925100,
+  "minBrightPixels": 102809,
+  "decodedCapacityBytes": 64000000,
+  "forbiddenFiles": 0,
+  "storyBeats": 8
+}

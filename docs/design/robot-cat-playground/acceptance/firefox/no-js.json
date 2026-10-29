@@ -1,0 +1,46 @@
+[
+  {
+    "appHidden": true,
+    "cartLoaded": true,
+    "fallbackVisible": true,
+    "galleryLinks": 6,
+    "height": 844,
+    "overflow": false,
+    "pauseHidden": true,
+    "thumbLoaded": true,
+    "width": 390
+  },
+  {
+    "appHidden": true,
+    "cartLoaded": true,
+    "fallbackVisible": true,
+    "galleryLinks": 6,
+    "height": 1024,
+    "overflow": false,
+    "pauseHidden": true,
+    "thumbLoaded": true,
+    "width": 768
+  },
+  {
+    "appHidden": true,
+    "cartLoaded": true,
+    "fallbackVisible": true,
+    "galleryLinks": 6,
+    "height": 900,
+    "overflow": false,
+    "pauseHidden": true,
+    "thumbLoaded": true,
+    "width": 1440
+  },
+  {
+    "appHidden": true,
+    "cartLoaded": true,
+    "fallbackVisible": true,
+    "galleryLinks": 6,
+    "height": 1080,
+    "overflow": false,
+    "pauseHidden": true,
+    "thumbLoaded": true,
+    "width": 1920
+  }
+]

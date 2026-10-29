@@ -1,0 +1,98 @@
+[
+  {
+    "bodyHidden": false,
+    "hash": 4105370803,
+    "label": "Кот, робот с хвостом, собран",
+    "head": "cat",
+    "mode": "robot",
+    "body": "tail"
+  },
+  {
+    "bodyHidden": false,
+    "hash": 2774649814,
+    "label": "Кот, робот без хвоста, собран",
+    "head": "cat",
+    "mode": "robot",
+    "body": "plain"
+  },
+  {
+    "bodyHidden": true,
+    "hash": 3062598676,
+    "label": "Кот, голова на тележке, собран",
+    "head": "cat",
+    "mode": "cart",
+    "body": null
+  },
+  {
+    "bodyHidden": false,
+    "hash": 1720158052,
+    "label": "Заяц, робот с хвостом, собран",
+    "head": "bunny",
+    "mode": "robot",
+    "body": "tail"
+  },
+  {
+    "bodyHidden": false,
+    "hash": 267916728,
+    "label": "Заяц, робот без хвоста, собран",
+    "head": "bunny",
+    "mode": "robot",
+    "body": "plain"
+  },
+  {
+    "bodyHidden": true,
+    "hash": 1471705422,
+    "label": "Заяц, голова на тележке, собран",
+    "head": "bunny",
+    "mode": "cart",
+    "body": null
+  },
+  {
+    "bodyHidden": false,
+    "hash": 705473248,
+    "label": "Утка, робот с хвостом, собран",
+    "head": "duck",
+    "mode": "robot",
+    "body": "tail"
+  },
+  {
+    "bodyHidden": false,
+    "hash": 779886403,
+    "label": "Утка, робот без хвоста, собран",
+    "head": "duck",
+    "mode": "robot",
+    "body": "plain"
+  },
+  {
+    "bodyHidden": true,
+    "hash": 3288361715,
+    "label": "Утка, голова на тележке, собран",
+    "head": "duck",
+    "mode": "cart",
+    "body": null
+  },
+  {
+    "bodyHidden": false,
+    "hash": 1289697609,
+    "label": "Собака, робот с хвостом, собран",
+    "head": "dog",
+    "mode": "robot",
+    "body": "tail"
+  },
+  {
+    "bodyHidden": false,
+    "hash": 199805453,
+    "label": "Собака, робот без хвоста, собран",
+    "head": "dog",
+    "mode": "robot",
+    "body": "plain"
+  },
+  {
+    "bodyHidden": true,
+    "hash": 2393048311,
+    "label": "Собака, голова на тележке, собран",
+    "head": "dog",
+    "mode": "cart",
+    "body": null
+  }
+]

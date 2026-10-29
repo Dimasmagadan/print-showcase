@@ -1,0 +1,7 @@
+---
+import geometry from '../scripts/internal-transition-geometry.js?raw';
+import runtime from '../scripts/internal-transition-runtime.js?raw';
+// Native pagereveal precedes module scripts. Keep the controller in head.
+const code = `(() => {\n${geometry.replace(/^export /gm, '')}\n${runtime}\n})();`;
+---
+<script is:inline set:html={code} />

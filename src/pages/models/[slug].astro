@@ -2,6 +2,8 @@
 import { getImage, Image } from "astro:assets";
 import { render } from "astro:content";
 import Base from "../../layouts/Base.astro";
+import RobotCatBackground from "../../components/RobotCatBackground.astro";
+import RobotCatStory from "../../components/RobotCatStory.astro";
 import { SITE } from "../../config";
 import { formatDate, getModels, videoEmbed } from "../../lib";
 
@@ -32,10 +34,12 @@ const tgDiscussion = data.tgPost?.match(/t\.me\/([^/]+\/\d+)/)?.[1];
 const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, "")}` : null;
 ---
 <Base title={data.title} description={data.summary} image={og} imageAlt={data.coverAlt} type="article">
-  <article class="wrap">
+  <link slot="head" rel="expect" blocking="render" href="#model-cover" />
+  {model.id === 'robot-cat' && <RobotCatBackground />}
+  <article class="wrap" data-model-page={model.id} data-cover-key={data.cover.src}>
     <header class="model-head">
-      <a class="back" href={base}>← Все модели</a>
-      <h1>{data.title}</h1>
+      <a class="back" href={`${base}#models`}>← Все модели</a>
+      <h1><span data-model-title>{data.title}</span></h1>
       <p class="lead">{data.summary}</p>
       <ul class="tags">
         <li>{formatDate(data.date)}</li>
@@ -43,11 +47,11 @@ const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, ""
       </ul>
     </header>
 
-    <div class="cover">
+    <div class="cover" id="model-cover">
       <Image src={data.cover} alt={data.coverAlt} widths={[800, 1400, 2000]} sizes="(max-width: 1120px) 100vw, 1088px" loading="eager" />
     </div>
 
-    <div class="model-layout">
+    {model.id === 'robot-cat' ? <RobotCatStory specs={data.specs} specLabels={specLabels} tgPost={data.tgPost} /> : <div class="model-layout">
       <div class="prose"><Content /></div>
       <aside class="aside">
         {specs.length > 0 && (
@@ -60,7 +64,7 @@ const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, ""
         {SITE.contact && <a class="btn" href={SITE.contact} target="_blank" rel="noopener">Связаться</a>}
         {data.tgPost && <a class="btn btn-ghost" href={data.tgPost} target="_blank" rel="noopener">Обсудить в канале</a>}
       </aside>
-    </div>
+    </div>}
 
     {data.video && (
       <section>
@@ -78,10 +82,10 @@ const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, ""
         <h2 class="section-title">{data.gallery.some((g) => g.kind === "photo") ? "Фото" : "Рендеры"}</h2>
         <div class="gallery">
           {data.gallery.map((g, i) => (
-            <button type="button" data-full={full[i].src} data-alt={g.alt} aria-label={`Открыть: ${g.alt}`}>
+            <a href={full[i].src} data-full={full[i].src} data-alt={g.alt} aria-label={`Открыть: ${g.alt}`}>
               <Image class={`fit-${g.kind === "render" ? "contain" : "cover"}`} src={g.src} alt={g.alt} widths={[300, 600]} sizes="(max-width: 600px) 100vw, 270px" />
               {g.kind === "render" && <span class="badge">рендер</span>}
-            </button>
+            </a>
           ))}
         </div>
       </section>
@@ -109,13 +113,18 @@ const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, ""
   <script>
     const dialog = document.getElementById("lightbox") as HTMLDialogElement;
     const img = dialog.querySelector("img")!;
-    document.querySelectorAll<HTMLButtonElement>(".gallery button").forEach((btn) =>
-      btn.addEventListener("click", () => {
+    let opener: HTMLAnchorElement | null = null;
+    document.querySelectorAll<HTMLAnchorElement>(".gallery a[data-full]").forEach((btn) =>
+      btn.addEventListener("click", (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || typeof dialog.showModal !== "function") return;
+        event.preventDefault();
+        opener = btn;
         img.src = btn.dataset.full!;
         img.alt = btn.dataset.alt!;
         dialog.showModal();
       }),
     );
     dialog.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("close", () => opener?.focus({ preventScroll: true }));
   </script>
 </Base>

@@ -1,0 +1,14 @@
+{
+  "paintedFrames": 85,
+  "photoReached": true,
+  "peakBytes": 64000000,
+  "peakRequests": 3,
+  "maxRafGap": 9.400000000001455,
+  "endingFrame": "0",
+  "endingCopy": [
+    "0"
+  ],
+  "frameBytes": 925100,
+  "recording": "recordings/chrome-forward-reverse-1440.webm",
+  "recordingSha256": "c0af755b5a4c70796ce98176363d9f88c2a6ec145df0d7c2103f7d0310b0ff73"
+}

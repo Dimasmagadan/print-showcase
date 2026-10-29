@@ -1,0 +1,18 @@
+{
+  "story": {
+    "owned": {
+      "current": 44800000,
+      "peak": 44800000
+    },
+    "imageCacheBytes": 18312576,
+    "conservativeSnapshotBytes": 63112576
+  },
+  "playgroundTransition": {
+    "owned": {
+      "current": 29491200,
+      "peak": 44800000
+    },
+    "imageCacheBytes": 20281732,
+    "conservativeSnapshotBytes": 49772932
+  }
+}

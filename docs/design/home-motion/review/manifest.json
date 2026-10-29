@@ -1,0 +1,377 @@
+{
+  "kind": "frozen HTML design layouts; browser acceptance pending",
+  "settings": {
+    "minWidth": 1280,
+    "minHeight": 800,
+    "scrollScreens": 2,
+    "timings": {
+      "approach": [
+        0.15,
+        0.45
+      ],
+      "environment": [
+        0.45,
+        0.7
+      ],
+      "caption": [
+        0.6,
+        0.72
+      ]
+    }
+  },
+  "frames": [
+    {
+      "name": "H01",
+      "width": 1440,
+      "height": 900,
+      "progress": 0,
+      "state": {
+        "progress": 0,
+        "catHeight": 27,
+        "catX": 71.5,
+        "catBottom": 27,
+        "printerScale": 1,
+        "doorDetail": 0,
+        "printerOpacity": 1,
+        "workshopOpacity": 0,
+        "warmth": 1,
+        "reflection": 0,
+        "introOpacity": 1,
+        "captionOpacity": 0
+      },
+      "file": "H01-1440x900.html",
+      "rasterStudy": "H01-1440x900.png"
+    },
+    {
+      "name": "H02",
+      "width": 1440,
+      "height": 900,
+      "progress": 0.4,
+      "state": {
+        "progress": 0.4,
+        "catHeight": 65.75,
+        "catX": 71.5,
+        "catBottom": 6.907407407407405,
+        "printerScale": 2.435185185185185,
+        "doorDetail": 1,
+        "printerOpacity": 1,
+        "workshopOpacity": 0,
+        "warmth": 1,
+        "reflection": 0,
+        "introOpacity": 0,
+        "captionOpacity": 0
+      },
+      "file": "H02-1440x900.html",
+      "rasterStudy": "H02-1440x900.png"
+    },
+    {
+      "name": "H03",
+      "width": 1440,
+      "height": 900,
+      "progress": 0.58,
+      "state": {
+        "progress": 0.58,
+        "catHeight": 68.85,
+        "catX": 68.055104,
+        "catBottom": 8.850892800000004,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0.4700160000000001,
+        "workshopOpacity": 0.5299839999999999,
+        "warmth": 0.4700160000000001,
+        "reflection": 0.05073549156333697,
+        "introOpacity": 0,
+        "captionOpacity": 0
+      },
+      "file": "H03-1440x900.html",
+      "rasterStudy": "H03-1440x900.png"
+    },
+    {
+      "name": "H04",
+      "width": 1440,
+      "height": 900,
+      "progress": 0.9,
+      "state": {
+        "progress": 0.9,
+        "catHeight": 67,
+        "catX": 65,
+        "catBottom": 12,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0,
+        "workshopOpacity": 1,
+        "warmth": 0,
+        "reflection": 2.694222958124177e-17,
+        "introOpacity": 0,
+        "captionOpacity": 1
+      },
+      "file": "H04-1440x900.html",
+      "rasterStudy": "H04-1440x900.png"
+    },
+    {
+      "name": "join-H02-H03-before",
+      "width": 1440,
+      "height": 900,
+      "progress": 0.445,
+      "state": {
+        "progress": 0.445,
+        "catHeight": 68.81551249999998,
+        "catX": 71.5,
+        "catBottom": 5.31788240740741,
+        "printerScale": 2.5487226851851847,
+        "doorDetail": 1,
+        "printerOpacity": 1,
+        "workshopOpacity": 0,
+        "warmth": 1,
+        "reflection": 0.013590365236124157,
+        "introOpacity": 0,
+        "captionOpacity": 0
+      },
+      "file": "join-H02-H03-before-1440x900.html",
+      "rasterStudy": "join-H02-H03-before-1440x900.png"
+    },
+    {
+      "name": "join-H02-H03-after",
+      "width": 1440,
+      "height": 900,
+      "progress": 0.455,
+      "state": {
+        "progress": 0.455,
+        "catHeight": 68.85,
+        "catX": 71.492304,
+        "catBottom": 5.307932800000011,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0.998816,
+        "workshopOpacity": 0.0011840000000000025,
+        "warmth": 0.998816,
+        "reflection": 0.03612928934141218,
+        "introOpacity": 0,
+        "captionOpacity": 0
+      },
+      "file": "join-H02-H03-after-1440x900.html",
+      "rasterStudy": "join-H02-H03-after-1440x900.png"
+    },
+    {
+      "name": "join-H03-H04-before",
+      "width": 1440,
+      "height": 900,
+      "progress": 0.695,
+      "state": {
+        "progress": 0.695,
+        "catHeight": 68.85,
+        "catX": 65.007696,
+        "catBottom": 11.9920672,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0.0011840000000000739,
+        "workshopOpacity": 0.9988159999999999,
+        "warmth": 0.0011840000000000739,
+        "reflection": 2.694222958124177e-17,
+        "introOpacity": 0,
+        "captionOpacity": 0.8878761574074072
+      },
+      "file": "join-H03-H04-before-1440x900.html",
+      "rasterStudy": "join-H03-H04-before-1440x900.png"
+    },
+    {
+      "name": "join-H03-H04-after",
+      "width": 1440,
+      "height": 900,
+      "progress": 0.705,
+      "state": {
+        "progress": 0.705,
+        "catHeight": 68.84308946793003,
+        "catX": 65,
+        "catBottom": 12,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0,
+        "workshopOpacity": 1,
+        "warmth": 0,
+        "reflection": 2.694222958124177e-17,
+        "introOpacity": 0,
+        "captionOpacity": 0.9570312499999999
+      },
+      "file": "join-H03-H04-after-1440x900.html",
+      "rasterStudy": "join-H03-H04-after-1440x900.png"
+    },
+    {
+      "name": "H01",
+      "width": 1920,
+      "height": 1080,
+      "progress": 0,
+      "state": {
+        "progress": 0,
+        "catHeight": 27,
+        "catX": 71.5,
+        "catBottom": 27,
+        "printerScale": 1,
+        "doorDetail": 0,
+        "printerOpacity": 1,
+        "workshopOpacity": 0,
+        "warmth": 1,
+        "reflection": 0,
+        "introOpacity": 1,
+        "captionOpacity": 0
+      },
+      "file": "H01-1920x1080.html",
+      "rasterStudy": "H01-1920x1080.png"
+    },
+    {
+      "name": "H02",
+      "width": 1920,
+      "height": 1080,
+      "progress": 0.4,
+      "state": {
+        "progress": 0.4,
+        "catHeight": 65.75,
+        "catX": 71.5,
+        "catBottom": 6.907407407407405,
+        "printerScale": 2.435185185185185,
+        "doorDetail": 1,
+        "printerOpacity": 1,
+        "workshopOpacity": 0,
+        "warmth": 1,
+        "reflection": 0,
+        "introOpacity": 0,
+        "captionOpacity": 0
+      },
+      "file": "H02-1920x1080.html",
+      "rasterStudy": "H02-1920x1080.png"
+    },
+    {
+      "name": "H03",
+      "width": 1920,
+      "height": 1080,
+      "progress": 0.58,
+      "state": {
+        "progress": 0.58,
+        "catHeight": 68.85,
+        "catX": 68.055104,
+        "catBottom": 8.850892800000004,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0.4700160000000001,
+        "workshopOpacity": 0.5299839999999999,
+        "warmth": 0.4700160000000001,
+        "reflection": 0.05073549156333697,
+        "introOpacity": 0,
+        "captionOpacity": 0
+      },
+      "file": "H03-1920x1080.html",
+      "rasterStudy": "H03-1920x1080.png"
+    },
+    {
+      "name": "H04",
+      "width": 1920,
+      "height": 1080,
+      "progress": 0.9,
+      "state": {
+        "progress": 0.9,
+        "catHeight": 67,
+        "catX": 65,
+        "catBottom": 12,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0,
+        "workshopOpacity": 1,
+        "warmth": 0,
+        "reflection": 2.694222958124177e-17,
+        "introOpacity": 0,
+        "captionOpacity": 1
+      },
+      "file": "H04-1920x1080.html",
+      "rasterStudy": "H04-1920x1080.png"
+    },
+    {
+      "name": "join-H02-H03-before",
+      "width": 1920,
+      "height": 1080,
+      "progress": 0.445,
+      "state": {
+        "progress": 0.445,
+        "catHeight": 68.81551249999998,
+        "catX": 71.5,
+        "catBottom": 5.31788240740741,
+        "printerScale": 2.5487226851851847,
+        "doorDetail": 1,
+        "printerOpacity": 1,
+        "workshopOpacity": 0,
+        "warmth": 1,
+        "reflection": 0.013590365236124157,
+        "introOpacity": 0,
+        "captionOpacity": 0
+      },
+      "file": "join-H02-H03-before-1920x1080.html",
+      "rasterStudy": "join-H02-H03-before-1920x1080.png"
+    },
+    {
+      "name": "join-H02-H03-after",
+      "width": 1920,
+      "height": 1080,
+      "progress": 0.455,
+      "state": {
+        "progress": 0.455,
+        "catHeight": 68.85,
+        "catX": 71.492304,
+        "catBottom": 5.307932800000011,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0.998816,
+        "workshopOpacity": 0.0011840000000000025,
+        "warmth": 0.998816,
+        "reflection": 0.03612928934141218,
+        "introOpacity": 0,
+        "captionOpacity": 0
+      },
+      "file": "join-H02-H03-after-1920x1080.html",
+      "rasterStudy": "join-H02-H03-after-1920x1080.png"
+    },
+    {
+      "name": "join-H03-H04-before",
+      "width": 1920,
+      "height": 1080,
+      "progress": 0.695,
+      "state": {
+        "progress": 0.695,
+        "catHeight": 68.85,
+        "catX": 65.007696,
+        "catBottom": 11.9920672,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0.0011840000000000739,
+        "workshopOpacity": 0.9988159999999999,
+        "warmth": 0.0011840000000000739,
+        "reflection": 2.694222958124177e-17,
+        "introOpacity": 0,
+        "captionOpacity": 0.8878761574074072
+      },
+      "file": "join-H03-H04-before-1920x1080.html",
+      "rasterStudy": "join-H03-H04-before-1920x1080.png"
+    },
+    {
+      "name": "join-H03-H04-after",
+      "width": 1920,
+      "height": 1080,
+      "progress": 0.705,
+      "state": {
+        "progress": 0.705,
+        "catHeight": 68.84308946793003,
+        "catX": 65,
+        "catBottom": 12,
+        "printerScale": 2.55,
+        "doorDetail": 1,
+        "printerOpacity": 0,
+        "workshopOpacity": 1,
+        "warmth": 0,
+        "reflection": 2.694222958124177e-17,
+        "introOpacity": 0,
+        "captionOpacity": 0.9570312499999999
+      },
+      "file": "join-H03-H04-after-1920x1080.html",
+      "rasterStudy": "join-H03-H04-after-1920x1080.png"
+    }
+  ],
+  "rasterNote": "PNG files are code-rendered composition studies with approximate typography/reflection, not browser screenshots. Use frozen HTML layouts for production CSS and text wrapping."
+}

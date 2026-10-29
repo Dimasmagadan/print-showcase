@@ -69,15 +69,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   .logo { font-size: 20px; }
 }
 /* Главная */
-.home-hero { position: relative; isolation: isolate; }
-.hero-visual { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
-.hero-visual img { width: 100%; max-width: none; height: 100%; object-fit: cover; object-position: 80% top; }
-.hero-visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, var(--bg) 25%, color-mix(in srgb, var(--bg) 80%, transparent) 50%, transparent 80%), linear-gradient(180deg, var(--bg), transparent 8%); }
-.hero-copy { position: relative; padding-block: clamp(190px, 52vw, 320px) 8px; }
-.hero-eyebrow { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 16px; }
-.hero-copy h1 { font-size: clamp(2rem, 1.2rem + 3.4vw, 3rem); line-height: 1.1; font-weight: 800; letter-spacing: -.025em; max-width: 15ch; margin: 0 0 20px; }
-.hero-description { color: var(--muted); font-size: clamp(15px, 14.2px + .1vw, 16px); line-height: 1.55; max-width: 52ch; margin: 0 0 24px; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .home-models { margin-top: 32px; scroll-margin-top: 24px; }
 .catalog-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
 .catalog-heading h2 { font-size: clamp(20px, 18.6px + .25vw, 22px); line-height: 1.25; margin: 0; }
@@ -88,21 +79,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .model-card-image { overflow: hidden; border-radius: 8px; background: var(--surface); }
 .model-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform 160ms ease; }
 .model-card img.fit-contain, .gallery img.fit-contain { object-fit: contain; background: #fff; }
-.model-card:hover img { transform: scale(1.025); }
+html.home-motion .model-card:hover img { transform: scale(1.025); }
 .model-card h3 { font-size: clamp(15px, 14.6px + .1vw, 16px); line-height: 1.35; font-weight: 600; margin: 10px 0 4px; min-height: 2.7em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .model-card:hover h3 { color: var(--ink-hover); }
+.model-card[data-restored-focus], .story-link[data-restored-focus] { outline: 2px solid var(--accent); outline-offset: 4px; }
 .model-card p { color: var(--muted); font-size: 13px; margin: 0; }
 @media (min-width: 768px) {
   .home-models { margin-top: 40px; }
   .model-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 1024px) {
- .home-hero { min-height: 500px; display: flex; align-items: center; }
-  .hero-visual img { width: 100%; object-fit: contain; object-position: right center; }
-  .hero-visual::after { background: linear-gradient(90deg, var(--bg) 10%, color-mix(in srgb, var(--bg) 92%, transparent) 32%, transparent 65%), linear-gradient(0deg, var(--bg), transparent 25%); }
-  .hero-copy { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-block: 40px; }
-  .hero-copy h1, .hero-description { max-width: 44%; }
-  .hero-copy h1 { max-width: 15ch; }
   .model-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .model-card img { transition: none; } .model-card:hover img { transform: none; } }
@@ -131,8 +117,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 
 .section-title { font-size: 22px; margin: 56px 0 20px; }
 .gallery { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
-.gallery button { all: unset; cursor: zoom-in; position: relative; border-radius: 10px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
-.gallery button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.gallery :is(button, a[data-full]) { all: unset; cursor: zoom-in; position: relative; border-radius: 10px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+.gallery :is(button, a[data-full]):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .gallery img { aspect-ratio: 1; width: 100%; object-fit: cover; }
 .badge { position: absolute; left: 8px; top: 8px; font-size: 12px; background: rgb(0 0 0 / .55); color: #fff; padding: 1px 8px; border-radius: 999px; }
 
@@ -149,3 +135,36 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 
 .comments { max-width: 100%; overflow-x: auto; }
 .comments iframe { max-width: 100%; }
+/* Native document transitions preserve links, history and document lifecycle.
+   No opt-in attributes means no animation, including when JS is unavailable. */
+@view-transition { navigation: auto; }
+::view-transition { pointer-events: none; }
+::view-transition-group(root) { animation-duration: 180ms; }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+@media (min-width: 1280px) and (min-height: 800px) and (prefers-reduced-motion: no-preference) {
+  html[data-page-motion]::view-transition-old(root) {
+    animation: internal-out 90ms ease-out both;
+  }
+  html[data-page-motion]::view-transition-new(root) {
+    animation: internal-in 90ms 90ms ease-in both;
+  }
+  html[data-page-motion="hero"]::view-transition-group(root) { animation-duration: 280ms; }
+  html[data-page-motion="hero"]::view-transition-old(root) {
+    animation: internal-out 280ms ease both;
+  }
+  html[data-page-motion="hero"]::view-transition-new(root) {
+    animation: internal-in 280ms ease both;
+  }
+  html[data-page-motion="spatial"]::view-transition-group(root) { animation-duration: 420ms; }
+  html[data-page-motion="hero"]::view-transition-group(model-heading) { animation-duration: 420ms; }
+  html[data-page-motion="hero"]::view-transition-new(model-heading) {
+    animation: internal-heading 280ms 140ms cubic-bezier(.22,1,.36,1) both;
+  }
+}
+@keyframes internal-out { to { opacity: 0; } }
+@keyframes internal-in { from { opacity: 0; } }
+@keyframes internal-heading { from { opacity: 0; transform: translateY(8px); } }
+
+/* Size text snapshots to the text while retaining the original heading layout. */
+[data-model-title] { display: inline-block; max-width: 100%; width: fit-content; vertical-align: top; }
+.model-card [data-model-title] { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }

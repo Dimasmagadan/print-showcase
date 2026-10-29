@@ -1,0 +1,96 @@
+---
+import { Image } from 'astro:assets';
+import RobotCatPlayground from './RobotCatPlayground.astro';
+import type { ImageMetadata } from 'astro';
+import { SITE } from '../config';
+import { story as t, redesign } from '../content/robot-cat-story';
+import anchors from '../content/robot-cat-redesign-anchors.json';
+import mobileAnchors from '../content/robot-cat-redesign-mobile-anchors.json';
+import reference from '../content/models/robot-cat/photos/03.jpg';
+import photo from '../content/models/robot-cat/photos/02.jpg';
+import storyCSS from '../styles/robot-cat-story.css?inline';
+const { tgPost } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const media = import.meta.glob<{ default: ImageMetadata }>('../assets/robot-cat-redesign/*.webp', { eager: true });
+const poster = (key: number, mobile = false) => media[`../assets/robot-cat-redesign/${mobile ? 'mobile-' : ''}K${key}.webp`].default;
+const labels = ['Голова', 'Корпус с руками и хвостом', 'Ноги'];
+const partKeys = ['Head', 'Body', 'Legs'] as const;
+const leaders = [1, 4, 5].map(key => {
+  const points = key === 1 ? anchors.K1.zones : [key === 4 ? anchors.K4.pin : anchors.K5.head];
+  return { key, points: points.map(([x,y]) => ({ x:x*16, y:y*10, path:`M ${key === 1 ? '560 730 L 650 730' : key === 4 ? '1200 330 L 1200 650' : '416 200 L 530 200'} L ${x*16} ${y*10}` })) };
+});
+---
+<div class="robot-cat-story" data-manifest={`${base}media/robot-cat-story/v2/manifest.json`}>
+  <style is:inline set:html={storyCSS} />
+  <div class="story-intro">
+    <a class="story-skip" href="#robot-playground">Собрать своего ↓</a>
+    <a class="story-skip" href="#robot-paint">К фото и характеристикам ↓</a>
+    <figure class="story-reference"><Image src={reference} alt={t.referenceAlt} width={180} /><figcaption>{t.referenceCaption}</figcaption></figure>
+  </div>
+  <div class="story-scene">
+    <div class="story-stage">
+      <div class="story-space">
+        <canvas width="1600" height="1000" aria-hidden="true" hidden></canvas>
+        <div class="story-flow">
+          {[[0],[1],[2,3],[4],[5],[6],[7]].map(keys => <div class:list={{'story-print-episode':keys.length===2,'story-single-episode':keys.length===1}} role={keys.length===2?'group':undefined} aria-label={keys.length===2?'Три детали: сборка и печатные положения':undefined}>{keys.map(key => { const beat=redesign[key]; return <section class="story-beat" data-story-key={key} aria-labelledby={`robot-key-${key}`}>
+            <figure class="beat-media">
+              <picture>
+                <source media="(max-width: 1023px)" srcset={poster(key, true).src} width={poster(key, true).width} height={poster(key, true).height} />
+                <Image src={poster(key)} alt={beat.alt} width={1600} height={1000} loading="lazy" />
+              </picture>
+              {[false,true].map(mobile => {
+                const a = (mobile ? mobileAnchors : anchors)[`K${key}` as keyof typeof anchors];
+                const pin = a.pin.map(v=>v*10);
+                return (key===1 || key===4 || key===6) && <svg class={`flow-leader ${mobile ? 'flow-leader-mobile' : 'flow-leader-wide'}`} viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+                  {key===1 && a.zones.map(([x,y])=><><path d={`M 150 800 L 200 800 L ${x*10} ${y*10}`} /><circle cx={x*10} cy={y*10} r="5" /></>)}
+                  {key===4 && <><path d={`M 850 760 L 850 ${pin[1]} L ${pin[0]} ${pin[1]}`}/><circle cx={pin[0]} cy={pin[1]} r="5"/></>}
+                  {key===6 && <>
+                    <defs><marker id={`swap-arrow-${mobile?'mobile':'wide'}`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 1 L 8 5 L 0 9"/></marker></defs>
+                    <path class="swap-path" d={`M ${pin[0]-20} ${pin[1]-5} Q 370 530 300 470`} marker-end={`url(#swap-arrow-${mobile?'mobile':'wide'})`}/>
+                    <path class="swap-path" d={`M 650 500 Q 580 490 ${pin[0]+18} ${pin[1]-12}`} marker-end={`url(#swap-arrow-${mobile?'mobile':'wide'})`}/>
+                    <circle cx={pin[0]} cy={pin[1]} r="5"/>
+                  </>}
+                </svg>;
+              })}
+              <figcaption class="story-render-label">рендер</figcaption>
+            </figure>
+            <div class="beat-copy">
+              <h2 id={`robot-key-${key}`}>{beat.title}</h2>
+              {beat.paragraphs.map(p => <p>{p}</p>)}
+              {key === 2 && <ul class="story-part-labels">{partKeys.map((name,i) => <li style={`--x:${anchors.K2.parts[name][0]+10}%;--y:${anchors.K2.parts[name][1]}%`}>{labels[i]}</li>)}</ul>}
+              {key === 3 && <div class="story-times" aria-label="Сравнение оценок времени печати">
+                <p>≈14 ч<span class="time-bar" aria-hidden="true"></span></p>
+                <p>≈2 ч 45 мин<span class="time-bar time-bar-short" aria-hidden="true"></span></p>
+                <p class="time-note">Оценки слайсера. Изменились конструкция и настройки печати.</p>
+              </div>}
+            </div>
+          </section>})}</div>)}
+        </div>
+        {leaders.map(({key,points}) => <svg class="story-annotation" data-annotation={key} viewBox="0 0 1600 1000" aria-hidden="true">{points.map(p => <><path d={p.path}/><circle cx={p.x} cy={p.y} r="4"/></>)}</svg>)}
+        <span class="stage-render-label" aria-hidden="true">рендер</span>
+      </div>
+    </div>
+  </div>
+  <section class="story-ordinary story-note" aria-labelledby="robot-extensions"><h2 id="robot-extensions">{t.extensions.title}</h2>{t.extensions.paragraphs.map(p => <p>{p}</p>)}</section>
+  <RobotCatPlayground />
+  <section class="story-ordinary story-paint" id="robot-paint" aria-labelledby="robot-paint-heading">
+    <figure class="story-photo"><Image src={photo} alt="Настоящий собранный робот из светлого PLA: видны рамка на животе и фактура напечатанных слоёв" widths={[400, 800, 1200]} sizes="(min-width: 900px) 45vw, 100vw" /><figcaption>Светлый пластик, рамка под рисунок и заметные слои печати.</figcaption></figure>
+    <div><h2 id="robot-paint-heading">{t.paint.title}</h2>{t.paint.paragraphs.map(p => <p>{p}</p>)}<p data-playground-paint-copy hidden>В конструкторе выше можно попробовать свой рисунок — он останется на корпусе, даже если сменить голову.</p></div>
+  </section>
+  <section class="story-ordinary story-note" aria-labelledby="robot-incident"><h2 id="robot-incident">Заметка о печати</h2>{t.incident.paragraphs.map(p => <p>{p}</p>)}</section>
+  <section class="story-details" aria-labelledby="robot-details">
+    <h2 id="robot-details">{t.specsTitle}</h2>
+    <dl class="specs">
+      <div><dt>Базовый робот-кот</dt><dd>Светлый PLA от Bambu Lab; высота 158 мм; три основные детали. Голова — сопло 0,4 мм, корпус и ноги — 0,6 мм.</dd></div>
+      <div><dt>Сменные головы</dt><dd>Кот, заяц, утка, собака.</dd></div>
+      <div><dt>Корпус</dt><dd>С кошачьим хвостом или без хвоста.</dd></div>
+      <div><dt>Тележка для головы</dt><dd>База, четыре колеса, четыре оси.</dd></div>
+    </dl>
+    {SITE.contact && <a class="btn" href={SITE.contact} target="_blank" rel="noopener">{t.contact}</a>}
+    {tgPost && <a class="btn btn-ghost" href={tgPost} target="_blank" rel="noopener">{t.discussion}</a>}
+  </section>
+</div>
+<script>
+  const root = document.querySelector<HTMLElement>('.robot-cat-story');
+  if (root) import('../scripts/robot-cat-redesign').then(({ initRedesign }) => initRedesign(root));
+</script>

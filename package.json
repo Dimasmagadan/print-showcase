@@ -5,10 +5,15 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test": "node --test scripts/home-featured.test.mjs scripts/home-motion.test.mjs scripts/internal-history.test.mjs scripts/internal-transition.test.mjs scripts/internal-transition-runtime.test.mjs scripts/internal-restoration.test.mjs scripts/robot-cat-story.test.mjs scripts/robot-cat-redesign.test.mjs scripts/robot-cat-playground.test.mjs scripts/robot-cat-playground-runtime.test.mjs",
+    "review:home": "npm run build && node scripts/home-motion-review.mjs && node scripts/home-motion-boards.mjs",
     "preview": "astro preview",
     "import": "uv run --with pillow --with pillow-heif scripts/import_model.py"
   },
   "dependencies": {
     "astro": "7.3.8"
+  },
+  "devDependencies": {
+    "sharp": "0.35.5"
   }
 }

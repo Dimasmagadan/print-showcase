@@ -1,0 +1,25 @@
+---
+import { HOME_MOTION } from '../scripts/home-motion-state';
+interface Props { enabled: boolean }
+const { enabled } = Astro.props;
+---
+{enabled && <script is:inline define:vars={{ settings: HOME_MOTION }}>
+  // Reserve the sticky section before first paint, never after media loading.
+  try {
+    const navigation = performance.getEntriesByType('navigation')[0];
+    const saved = history.state?.homeReturn;
+    const restoring = navigation?.type === 'back_forward' && saved?.version === 1 && saved?.motion === true &&
+      typeof saved.model === 'string' && /^[a-z0-9-]+$/.test(saved.model) &&
+      ['catalog', 'hero'].includes(saved.source) && Number.isFinite(saved.offset) &&
+      Number.isFinite(saved.progress) && saved.progress >= 0 && saved.progress <= 1 &&
+      typeof saved.keyboard === 'boolean';
+    if (!location.hash && (restoring || (scrollY === 0 && navigation?.type !== 'back_forward')) &&
+        innerWidth >= settings.minWidth && innerHeight >= settings.minHeight &&
+        !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        'ResizeObserver' in window && 'decode' in HTMLImageElement.prototype &&
+        'inert' in HTMLElement.prototype && CSS.supports('height', '100svh')) {
+      document.documentElement.classList.add('home-motion');
+      if (restoring) document.documentElement.dataset.homeRestoring = '';
+    }
+  } catch { /* Full static HTML remains the default. */ }
+</script>}

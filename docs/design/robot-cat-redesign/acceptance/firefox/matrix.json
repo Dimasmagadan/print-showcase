@@ -1,0 +1,83 @@
+{
+  "browser": {
+    "acceptInsecureCerts": false,
+    "browserName": "firefox",
+    "browserVersion": "152.0",
+    "moz:accessibilityChecks": false,
+    "moz:buildID": "20260610111934",
+    "moz:geckodriverVersion": "0.37.1",
+    "moz:headless": true,
+    "moz:platformVersion": "25.5.0",
+    "moz:processID": 25323,
+    "moz:profile": "/var/folders/wq/pvt_v705409grc0d06vcktrw0000gn/T/rust_mozprofile05pL5P",
+    "moz:shutdownTimeout": 60000,
+    "moz:webdriverClick": true,
+    "moz:windowless": false,
+    "pageLoadStrategy": "normal",
+    "platformName": "mac",
+    "proxy": {},
+    "setWindowRect": true,
+    "strictFileInteractability": false,
+    "timeouts": {
+      "implicit": 0,
+      "pageLoad": 300000,
+      "script": 30000
+    },
+    "unhandledPromptBehavior": "dismiss and notify",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:152.0) Gecko/20100101 Firefox/152.0"
+  },
+  "url": "http://127.0.0.1:8768/models/robot-cat/",
+  "reduced": false,
+  "checks": [
+    {
+      "headings": 1,
+      "height": 900,
+      "motion": true,
+      "overflow": false,
+      "peakBytes": "64000000",
+      "peakRequests": "3",
+      "width": 1440,
+      "viewportMethod": "native window"
+    },
+    {
+      "headings": 1,
+      "height": 1080,
+      "motion": true,
+      "overflow": false,
+      "peakBytes": "64000000",
+      "peakRequests": "3",
+      "width": 1920,
+      "viewportMethod": "native window"
+    },
+    {
+      "headings": 1,
+      "height": 768,
+      "motion": false,
+      "overflow": false,
+      "peakBytes": "19200000",
+      "peakRequests": "3",
+      "width": 1024,
+      "viewportMethod": "native window"
+    },
+    {
+      "headings": 1,
+      "height": 844,
+      "motion": false,
+      "overflow": false,
+      "peakBytes": null,
+      "peakRequests": null,
+      "width": 390,
+      "viewportMethod": "iframe"
+    },
+    {
+      "headings": 1,
+      "height": 640,
+      "motion": false,
+      "overflow": false,
+      "peakBytes": null,
+      "peakRequests": null,
+      "width": 360,
+      "viewportMethod": "iframe"
+    }
+  ]
+}

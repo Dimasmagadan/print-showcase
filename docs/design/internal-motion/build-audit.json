@@ -1,0 +1,48 @@
+{
+  "kind": "structural build audit; not browser evidence",
+  "base": "/print-showcase/",
+  "pages": [
+    {
+      "id": "animal-puzzle",
+      "asset": "/print-showcase/_astro/assembled_angle.DkmW96NE.png",
+      "width": 1400,
+      "height": 800,
+      "discussionWidgets": 1
+    },
+    {
+      "id": "bunny-meds",
+      "asset": "/print-showcase/_astro/01.SAbt9bvQ.jpg",
+      "width": 1800,
+      "height": 2400,
+      "discussionWidgets": 1
+    },
+    {
+      "id": "letters-blocks",
+      "asset": "/print-showcase/_astro/01.DlY5TUlQ.jpg",
+      "width": 1350,
+      "height": 2400,
+      "discussionWidgets": 0
+    },
+    {
+      "id": "med-box",
+      "asset": "/print-showcase/_astro/02.Dd8HJ6Hu.jpg",
+      "width": 1350,
+      "height": 2400,
+      "discussionWidgets": 1
+    },
+    {
+      "id": "robot-cat",
+      "asset": "/print-showcase/_astro/02.BxwgZZsV.jpg",
+      "width": 1350,
+      "height": 2400,
+      "discussionWidgets": 0
+    },
+    {
+      "id": "teeth-box",
+      "asset": "/print-showcase/_astro/iso.BsEGgfVs.png",
+      "width": 1200,
+      "height": 1200,
+      "discussionWidgets": 1
+    }
+  ]
+}

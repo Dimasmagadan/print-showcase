@@ -1,0 +1,13 @@
+{
+  "frameCount": 85,
+  "frameBytes": 925100,
+  "sourcePosterCount": 16,
+  "sourcePosterBytes": 169208,
+  "allStoryImageVariants": 18,
+  "allStoryImageVariantBytes": 1029468,
+  "allNarrativeMediaBytes": 1954568,
+  "runtimeRawBytes": 9275,
+  "runtimeGzipBytes": 4093,
+  "legacyV1FrameBytes": 595502,
+  "minBrightPixels": 102809
+}

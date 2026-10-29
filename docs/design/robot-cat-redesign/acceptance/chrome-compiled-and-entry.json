@@ -1,0 +1,30 @@
+[
+  {
+    "base": "",
+    "kind": "compiled playback + deep entry",
+    "frame": "48",
+    "manifest": "/media/robot-cat-story/v2/manifest.json",
+    "bad": []
+  },
+  {
+    "base": "/print-showcase",
+    "kind": "compiled playback + deep entry",
+    "frame": "48",
+    "manifest": "/print-showcase/media/robot-cat-story/v2/manifest.json",
+    "bad": []
+  },
+  {
+    "kind": "home entry",
+    "links": 2,
+    "title": "Робот-кот из «Трёх котов»",
+    "cover": true,
+    "sceneCount": 1
+  },
+  {
+    "kind": "catalog entry",
+    "links": 2,
+    "title": "Робот-кот из «Трёх котов»",
+    "cover": true,
+    "sceneCount": 1
+  }
+]

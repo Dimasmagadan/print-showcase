@@ -1,0 +1,23 @@
+{
+  "base": "/",
+  "pages": 7,
+  "unchangedPages": [
+    "index.html",
+    "models/animal-puzzle/index.html",
+    "models/bunny-meds/index.html",
+    "models/letters-blocks/index.html",
+    "models/med-box/index.html",
+    "models/teeth-box/index.html"
+  ],
+  "preserved": [
+    "robot header",
+    "original cover",
+    "gallery",
+    "lightbox"
+  ],
+  "localReferences": 106,
+  "frameCount": 80,
+  "frameBytes": 595502,
+  "storyJSBytes": 6342,
+  "forbiddenFiles": []
+}

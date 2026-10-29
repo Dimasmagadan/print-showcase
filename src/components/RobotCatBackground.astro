@@ -1,0 +1,38 @@
+---
+import '../styles/robot-cat-backgrounds.css';
+const { variant = 'studio', showPicker = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const variants = [
+  ['studio', '01', 'Тёплая студия'],
+  ['aurora', '02', 'Сияние'],
+  ['blueprint', '03', 'Чертёж'],
+  ['orbits', '04', 'Орбиты'],
+];
+---
+<div class="cat-background" data-background={variant} aria-hidden="true">
+  <div class="bg-wash"></div><div class="bg-grid"></div>
+  <div class="bg-orbit orbit-one"></div><div class="bg-orbit orbit-two"></div><div class="bg-orbit orbit-three"></div>
+  <div class="bg-grain"></div>
+</div>
+{showPicker ? <nav class="background-picker" aria-label="Варианты фона">
+  <span class="picker-caption">ФОН / ROBOT CAT</span>
+  {variants.map(([id, number, label]) => <a href={`${base}robot-cat-backgrounds/${id}/#robot-key-0`} aria-current={variant === id ? 'page' : undefined}><span>{number}</span> {label}</a>)}
+  <a class="picker-original" href={`${base}models/robot-cat/#robot-key-0`}>Оригинал ↗</a>
+  <button type="button" aria-pressed="false" id="background-pause" hidden>Пауза</button>
+</nav> : <button class="background-pause" type="button" aria-pressed="false" id="background-pause" hidden>Приостановить фон</button>}
+<script>
+  const background = document.querySelector('.cat-background');
+  const stage = document.querySelector('.story-stage');
+  if (background && stage) stage.prepend(background.cloneNode(true));
+  const button = document.querySelector<HTMLButtonElement>('#background-pause');
+  if (button?.classList.contains('background-pause')) document.querySelector('.model-head')?.append(button);
+  if (button) button.hidden = false;
+  button?.addEventListener('click', () => {
+    const paused = button.getAttribute('aria-pressed') !== 'true';
+    button.setAttribute('aria-pressed', String(paused));
+    document.querySelectorAll('.cat-background').forEach(bg => bg.classList.toggle('is-paused', paused));
+    button.textContent = button.classList.contains('background-pause')
+      ? (paused ? 'Продолжить движение фона' : 'Приостановить фон')
+      : (paused ? 'Продолжить' : 'Пауза');
+  });
+</script>

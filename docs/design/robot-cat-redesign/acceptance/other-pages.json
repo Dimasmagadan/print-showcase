@@ -1,0 +1,32 @@
+[
+  {
+    "path": "index.html",
+    "unchangedAfterAssetContentNormalization": true,
+    "sha256": "9c23afbf27f6eed64aaa87b910f0444c8c6e2d1595bdf24753cf36fe26c3c1fe"
+  },
+  {
+    "path": "models/animal-puzzle/index.html",
+    "unchangedAfterAssetContentNormalization": true,
+    "sha256": "81ee74a441e068d96ef0a6cb29e884971fb96153512308990187cc226556707f"
+  },
+  {
+    "path": "models/bunny-meds/index.html",
+    "unchangedAfterAssetContentNormalization": true,
+    "sha256": "29ca8e1b4fb43aa160cc06e5abebf8a6248f20ed209d979e5abe7f7548f6ca62"
+  },
+  {
+    "path": "models/letters-blocks/index.html",
+    "unchangedAfterAssetContentNormalization": true,
+    "sha256": "4151c3dc6168bc98f10bb49a8c534b99386b2603151c7dd2103588c8d263796d"
+  },
+  {
+    "path": "models/med-box/index.html",
+    "unchangedAfterAssetContentNormalization": true,
+    "sha256": "b9b75443421855682200d6c22b7adbe5ef0e9e6c371e2f10c9f5bd5cbeefceb1"
+  },
+  {
+    "path": "models/teeth-box/index.html",
+    "unchangedAfterAssetContentNormalization": true,
+    "sha256": "331becb06e56bd2a1d5d262a178857e40338ae28125be1427679d3ae1588eac3"
+  }
+]

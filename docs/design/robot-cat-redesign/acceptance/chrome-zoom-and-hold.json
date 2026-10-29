@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Chrome 200% viewport-equivalent layout",
+    "width": 720,
+    "height": 450,
+    "dpr": 2,
+    "motion": false,
+    "overflow": false,
+    "frameRequests": 0
+  },
+  {
+    "name": "leader-before-copy + stopped-scroll hold",
+    "leading": {
+      "line": 0.260055,
+      "copy": 0,
+      "frame": "48"
+    },
+    "paused": {
+      "line": 1,
+      "copy": 0.591712,
+      "frame": "48"
+    },
+    "later": {
+      "line": 1,
+      "copy": 0.591712,
+      "frame": "48"
+    }
+  }
+]

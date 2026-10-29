@@ -1,0 +1,10 @@
+{
+  "root": "/Users/dmitreydyakonov/www/repos/print-showcase/dist",
+  "base": "/",
+  "frames": 85,
+  "frameBytes": 925100,
+  "minBrightPixels": 102809,
+  "decodedCapacityBytes": 64000000,
+  "forbiddenFiles": 0,
+  "storyBeats": 8
+}

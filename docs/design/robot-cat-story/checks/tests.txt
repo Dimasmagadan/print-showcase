@@ -1,0 +1,70 @@
+
+> test
+> node --test scripts/home-featured.test.mjs scripts/home-motion.test.mjs scripts/internal-history.test.mjs scripts/internal-transition.test.mjs scripts/internal-transition-runtime.test.mjs scripts/internal-restoration.test.mjs scripts/robot-cat-story.test.mjs
+
+✔ a newer publication does not replace the home subject; other models retain date order (3.1795ms)
+✔ missing and draft subjects produce an ordinary published catalog (0.33175ms)
+(node:91663) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ subject stays on the same camera/bed until the door crossing (0.582209ms)
+✔ unavailable ResizeObserver leaves a usable static page (4.087167ms)
+✔ deferred decode failure removes enhancement and preserves the healthy static cat/printer (0.928916ms)
+✔ first-frame decode failure selects emergency media (0.59775ms)
+✔ scroll seek is reversible; focused CTA remains visible and usable (1.708458ms)
+✔ live reduced motion keeps the reader at the same catalog card (1.62875ms)
+✔ a focused final link stays visible on reverse seek and transfers to its catalog card in static mode (0.791708ms)
+✔ fragment navigation and restored catalog position defer enhancement until return to hero (1.1665ms)
+✔ return from browser cache rechecks a changed viewport without relying on resize (0.621708ms)
+✔ history metadata preserves each independent source entry (0.8245ms)
+✔ malformed and incompatible history metadata uses ordinary restoration (0.103084ms)
+(node:91665) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ new history document restores hero progress and focuses after the scene frame (1.371417ms)
+✔ scene decode failure restores the matching static card instead of old absolute scroll (0.42725ms)
+✔ bfcache keeps native scroll and focus when scene geometry is still compatible (0.748375ms)
+✔ bfcache with an unavailable hero restores its card after the home mode check (0.385792ms)
+✔ catalog restoration uses the saved card offset and preserves pointer focus (0.331625ms)
+✔ new input cancels both a media wait and a queued restoration (2.89075ms)
+✔ new focus between scroll restoration and its focus frame is preserved (0.273292ms)
+✔ reload, anchor and malformed metadata leave browser restoration alone (0.65125ms)
+✔ source capture keeps other history state and ignores modifier clicks (0.328375ms)
+✔ actual hero link is handed off even when the model also has a card (4.711417ms)
+✔ spatial source cleanup restores the original before bfcache return (0.604291ms)
+✔ ordinary initial focus/scroll does not cancel before native animation readiness (2.259625ms)
+✔ new input, viewport changes and reduced motion finish the effect (11.799417ms)
+✔ modified clicks do not create handoff state (1.093917ms)
+✔ title still moves when the image or fonts need the fade fallback (2.817041ms)
+✔ static mode is restored at exact viewport boundaries and for reduced motion (5.813333ms)
+✔ an incompatible asset fades while its title keeps the shared name (1.145375ms)
+✔ an exception restores readable HTML and clears shared names (6.824291ms)
+✔ each published card pairs its own image and title and cleans both on completion (8.622792ms)
+✔ portrait photo expands without stretching while revealing its crop (2.0325ms)
+✔ contain render keeps its aspect and white margins outside the shared image (0.1215ms)
+✔ actual hover scale participates in geometry and clipping (0.083875ms)
+✔ invalid dimensions and invisible subjects use fallback (3.196625ms)
+✔ one-use handoff rejects wrong entry, destination, expiry and malformed clipping (0.308584ms)
+✔ split endpoints, interval edges and long reading holds are reversible for arbitrary counts (1.827291ms)
+✔ swap holds both ends, is monotone and clamps malformed progress/count safely (0.324625ms)
+✔ progress uses wrapper edges and stays finite for zero/negative ranges (0.067208ms)
+✔ stale decode cannot announce readiness or replace the new desired frame (2.270542ms)
+✔ global request/bitmap limits, LRU closure and two-chapter prefetch converge without looping (1.546ms)
+✔ clear during decode closes stale bitmaps; old requests still occupy concurrency slots until settled (0.379334ms)
+✔ 404 and decode failures stop their chapter, while the other owner still loads (0.7885ms)
+✔ absent root and unsupported bitmap API cause no story requests or handlers (0.749458ms)
+✔ static mode never fetches frames; comparison initializes and works independently (0.612292ms)
+✔ poster decode failure preserves both labelled images and keeps unavailable controls hidden (0.43675ms)
+✔ disable or pagehide before manifest completion aborts and ignores the late response (1.207625ms)
+✔ real controller reverses both sequences and performs no animation work after dispose (0.974833ms)
+✔ manifest and sequences load near their own chapters; decode schedules a still frame without a scroll event (0.587542ms)
+✔ rapid seek paints the current frame when an older decode resolves later (0.531875ms)
+✔ manifest/frame errors retain poster and disable only that chapter for the visit (0.576208ms)
+✔ disable/pagehide invalidate loading; pageshow reuses one controller and seeks native restored position (1.308208ms)
+✔ manifest frames are safe, complete, dimensionally correct and within the media budget (12.317ms)
+ℹ tests 54
+ℹ suites 0
+ℹ pass 54
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 145.665

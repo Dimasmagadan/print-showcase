@@ -1,0 +1,26 @@
+---
+import { getImage } from 'astro:assets';
+import { HOME_CAT_MASK, HOME_CAT_VIEWBOX, HOME_CAT_CONTACTS } from '../scripts/home-cat-mask';
+import type { ImageMetadata } from 'astro';
+interface Props { photo: ImageMetadata }
+const { photo } = Astro.props;
+const image = await getImage({ src: photo, width: 1152, format: 'webp', quality: 78 });
+const id = 'home-cat-photo-silhouette';
+---
+<!-- Original photograph, displayed through a vector silhouette. No generated subject pixels. -->
+<svg viewBox={HOME_CAT_VIEWBOX} aria-hidden="true" focusable="false" class="cat-photo">
+  <defs>
+    <clipPath id={id}>
+      <path clip-rule="evenodd" d={HOME_CAT_MASK} />
+    </clipPath>
+    <filter id={`${id}-shadow`} x="-50%" y="-100%" width="200%" height="300%">
+      <feGaussianBlur stdDeviation="7" />
+    </filter>
+  </defs>
+  <!-- Two contact points follow the photographed feet's different depths. -->
+  <g fill="none" stroke="#090706" stroke-width="16" stroke-linecap="round" opacity=".75" filter={`url(#${id}-shadow)`}>
+    {HOME_CAT_CONTACTS.map(path => <path d={path} />)}
+  </g>
+  <image href={image.src} width="1152" height="2048" clip-path={`url(#${id})`} />
+</svg>
+<img data-first src={image.src} width="1152" height="2048" hidden style="display:none" alt="" />

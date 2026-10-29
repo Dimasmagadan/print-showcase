@@ -1,0 +1,52 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "motion": true,
+    "reason": null,
+    "overflow": false,
+    "peakBytes": 64000000,
+    "peakRequests": 3,
+    "frameRequests": 55
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "motion": true,
+    "reason": null,
+    "overflow": false,
+    "peakBytes": 64000000,
+    "peakRequests": 3,
+    "frameRequests": 55
+  },
+  {
+    "width": 1024,
+    "height": 768,
+    "motion": false,
+    "reason": "text-fit",
+    "overflow": false,
+    "peakBytes": 19200000,
+    "peakRequests": 3,
+    "frameRequests": 10
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "motion": false,
+    "reason": null,
+    "overflow": false,
+    "peakBytes": 0,
+    "peakRequests": 0,
+    "frameRequests": 0
+  },
+  {
+    "width": 360,
+    "height": 640,
+    "motion": false,
+    "reason": null,
+    "overflow": false,
+    "peakBytes": 0,
+    "peakRequests": 0,
+    "frameRequests": 0
+  }
+]

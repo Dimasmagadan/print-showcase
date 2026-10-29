@@ -1,0 +1,21 @@
+[
+  {
+    "appHidden": false,
+    "description": "Кот, робот с хвостом, собран",
+    "height": 450,
+    "overflow": false,
+    "stage": {
+      "bottom": 856,
+      "height": 680,
+      "left": 20,
+      "right": 700,
+      "top": 176,
+      "width": 680,
+      "x": 20,
+      "y": 176
+    },
+    "width": 720,
+    "drawingSurvived": true,
+    "peakDecodedBytes": 3276800
+  }
+]

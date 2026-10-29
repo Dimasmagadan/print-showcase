@@ -1,0 +1,42 @@
+{
+  "browser": {
+    "acceptInsecureCerts": false,
+    "browserName": "firefox",
+    "browserVersion": "152.0",
+    "moz:accessibilityChecks": false,
+    "moz:buildID": "20260610111934",
+    "moz:geckodriverVersion": "0.37.1",
+    "moz:headless": true,
+    "moz:platformVersion": "25.5.0",
+    "moz:processID": 54396,
+    "moz:profile": "/var/folders/wq/pvt_v705409grc0d06vcktrw0000gn/T/rust_mozprofileyZ9BN7",
+    "moz:shutdownTimeout": 60000,
+    "moz:webdriverClick": true,
+    "moz:windowless": false,
+    "pageLoadStrategy": "normal",
+    "platformName": "mac",
+    "proxy": {},
+    "setWindowRect": true,
+    "strictFileInteractability": false,
+    "timeouts": {
+      "implicit": 0,
+      "pageLoad": 300000,
+      "script": 30000
+    },
+    "unhandledPromptBehavior": "dismiss and notify",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:152.0) Gecko/20100101 Firefox/152.0"
+  },
+  "url": "http://127.0.0.1:4324/models/robot-cat/",
+  "reduced": false,
+  "checks": [
+    {
+      "dpr": 2,
+      "height": 450,
+      "motion": false,
+      "name": "native zoom",
+      "overflow": false,
+      "width": 720,
+      "zoom": 2
+    }
+  ]
+}

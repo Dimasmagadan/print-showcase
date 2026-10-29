@@ -1,0 +1,27 @@
+[
+  {
+    "name": "back-forward",
+    "frame": "36",
+    "scrollDelta": 0
+  },
+  {
+    "name": "keyboard-skip",
+    "photoTop": -0.1171875
+  },
+  {
+    "name": "lightbox-keyboard",
+    "closed": true,
+    "focusRestored": true
+  },
+  {
+    "name": "deep-entry",
+    "frame": "48"
+  },
+  {
+    "name": "native-zoom-attempt",
+    "before": 1440,
+    "after": 1440,
+    "dpr": 1,
+    "motion": true
+  }
+]

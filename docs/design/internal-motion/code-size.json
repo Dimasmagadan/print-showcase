@@ -1,0 +1,24 @@
+{
+  "inlineTransitionJS": {
+    "bytes": 12021,
+    "gzipBytes": 3898
+  },
+  "addedCSS": {
+    "bytes": 1971,
+    "gzipBytes": 707
+  },
+  "note": "Standalone gzip measurements, not incremental response compression. Direct model modules include existing gallery and new history code; shared imports are not counted here.",
+  "modelModules": [
+    {
+      "bytes": 327,
+      "gzipBytes": 221,
+      "includesHistory": false
+    },
+    {
+      "bytes": 2866,
+      "gzipBytes": 1277,
+      "src": "/print-showcase/_astro/Base.astro_astro_type_script_index_0_lang.D0yLpmzE.js",
+      "includesHistory": true
+    }
+  ]
+}

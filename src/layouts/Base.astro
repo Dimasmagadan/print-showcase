@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { SITE } from "../config";
+import InternalMotionHead from "../components/InternalMotionHead.astro";
 
 interface Props {
   home?: boolean;
@@ -21,6 +22,8 @@ const ogImage = image ? new URL(image, Astro.site).href : undefined;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <InternalMotionHead />
+    <slot name="head" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={fullTitle} />
@@ -68,4 +71,7 @@ const ogImage = image ? new URL(image, Astro.site).href : undefined;
       </div>
     </footer>
   </body>
+  <script>
+    import '../scripts/internal-motion';
+  </script>
 </html>

@@ -1,0 +1,36 @@
+[
+  {
+    "name": "404",
+    "scroll": 5036,
+    "targetTop": 32.0078125,
+    "posterReady": true,
+    "text": "Без клея"
+  },
+  {
+    "name": "slow-rapid",
+    "motion": true,
+    "frame": "84",
+    "peakBytes": "38400000",
+    "peakRequests": "3"
+  },
+  {
+    "name": "resize",
+    "flow": {
+      "top": 32,
+      "reason": "text-fit"
+    },
+    "restoredFrame": "36"
+  },
+  {
+    "name": "enlarged-text",
+    "motion": false,
+    "overflow": false,
+    "top": 32.0703125
+  },
+  {
+    "name": "reduced",
+    "motion": false,
+    "overflow": false,
+    "frames": 0
+  }
+]

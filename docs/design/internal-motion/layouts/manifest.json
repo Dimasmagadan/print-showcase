@@ -1,0 +1,415 @@
+{
+  "kind": "programmatic layout studies: spatial prototype and fallback; not browser evidence",
+  "frames": [
+    {
+      "name": "robot-cat-M01",
+      "filename": "robot-cat-M01-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "robot-cat-M02-fallback",
+      "filename": "robot-cat-M02-fallback-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "robot-cat-M03-fallback",
+      "filename": "robot-cat-M03-fallback-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "robot-cat-M04",
+      "filename": "robot-cat-M04-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "robot-cat-return",
+      "filename": "robot-cat-return-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "robot-cat-handoff-before",
+      "filename": "robot-cat-handoff-before-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "robot-cat-handoff-after",
+      "filename": "robot-cat-handoff-after-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "robot-cat-spatial-M01",
+      "filename": "robot-cat-spatial-M01-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 0
+    },
+    {
+      "name": "robot-cat-spatial-M02",
+      "filename": "robot-cat-spatial-M02-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 90
+    },
+    {
+      "name": "robot-cat-spatial-crop-before",
+      "filename": "robot-cat-spatial-crop-before-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 139
+    },
+    {
+      "name": "robot-cat-spatial-crop-after",
+      "filename": "robot-cat-spatial-crop-after-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 141
+    },
+    {
+      "name": "robot-cat-spatial-M03",
+      "filename": "robot-cat-spatial-M03-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 280
+    },
+    {
+      "name": "robot-cat-spatial-M04",
+      "filename": "robot-cat-spatial-M04-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 420
+    },
+    {
+      "name": "animal-puzzle-M01",
+      "filename": "animal-puzzle-M01-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "animal-puzzle-M02-fallback",
+      "filename": "animal-puzzle-M02-fallback-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "animal-puzzle-M03-fallback",
+      "filename": "animal-puzzle-M03-fallback-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "animal-puzzle-M04",
+      "filename": "animal-puzzle-M04-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "animal-puzzle-return",
+      "filename": "animal-puzzle-return-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "animal-puzzle-handoff-before",
+      "filename": "animal-puzzle-handoff-before-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "animal-puzzle-handoff-after",
+      "filename": "animal-puzzle-handoff-after-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "animal-puzzle-spatial-M01",
+      "filename": "animal-puzzle-spatial-M01-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 0
+    },
+    {
+      "name": "animal-puzzle-spatial-M02",
+      "filename": "animal-puzzle-spatial-M02-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 90
+    },
+    {
+      "name": "animal-puzzle-spatial-crop-before",
+      "filename": "animal-puzzle-spatial-crop-before-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 139
+    },
+    {
+      "name": "animal-puzzle-spatial-crop-after",
+      "filename": "animal-puzzle-spatial-crop-after-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 141
+    },
+    {
+      "name": "animal-puzzle-spatial-M03",
+      "filename": "animal-puzzle-spatial-M03-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 280
+    },
+    {
+      "name": "animal-puzzle-spatial-M04",
+      "filename": "animal-puzzle-spatial-M04-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 420
+    },
+    {
+      "name": "hero-H04",
+      "filename": "hero-H04-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "hero-overlap-middle",
+      "filename": "hero-overlap-middle-1440x900.html",
+      "width": 1440,
+      "height": 900,
+      "time": 140
+    },
+    {
+      "name": "hero-handoff-before",
+      "filename": "hero-handoff-before-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "hero-handoff-after",
+      "filename": "hero-handoff-after-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "hero-final",
+      "filename": "hero-final-1440x900.html",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "robot-cat-M01",
+      "filename": "robot-cat-M01-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "robot-cat-M02-fallback",
+      "filename": "robot-cat-M02-fallback-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "robot-cat-M03-fallback",
+      "filename": "robot-cat-M03-fallback-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "robot-cat-M04",
+      "filename": "robot-cat-M04-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "robot-cat-return",
+      "filename": "robot-cat-return-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "robot-cat-handoff-before",
+      "filename": "robot-cat-handoff-before-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "robot-cat-handoff-after",
+      "filename": "robot-cat-handoff-after-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "robot-cat-spatial-M01",
+      "filename": "robot-cat-spatial-M01-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 0
+    },
+    {
+      "name": "robot-cat-spatial-M02",
+      "filename": "robot-cat-spatial-M02-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 90
+    },
+    {
+      "name": "robot-cat-spatial-crop-before",
+      "filename": "robot-cat-spatial-crop-before-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 139
+    },
+    {
+      "name": "robot-cat-spatial-crop-after",
+      "filename": "robot-cat-spatial-crop-after-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 141
+    },
+    {
+      "name": "robot-cat-spatial-M03",
+      "filename": "robot-cat-spatial-M03-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 280
+    },
+    {
+      "name": "robot-cat-spatial-M04",
+      "filename": "robot-cat-spatial-M04-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 420
+    },
+    {
+      "name": "animal-puzzle-M01",
+      "filename": "animal-puzzle-M01-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "animal-puzzle-M02-fallback",
+      "filename": "animal-puzzle-M02-fallback-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "animal-puzzle-M03-fallback",
+      "filename": "animal-puzzle-M03-fallback-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "animal-puzzle-M04",
+      "filename": "animal-puzzle-M04-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "animal-puzzle-return",
+      "filename": "animal-puzzle-return-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "animal-puzzle-handoff-before",
+      "filename": "animal-puzzle-handoff-before-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "animal-puzzle-handoff-after",
+      "filename": "animal-puzzle-handoff-after-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "animal-puzzle-spatial-M01",
+      "filename": "animal-puzzle-spatial-M01-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 0
+    },
+    {
+      "name": "animal-puzzle-spatial-M02",
+      "filename": "animal-puzzle-spatial-M02-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 90
+    },
+    {
+      "name": "animal-puzzle-spatial-crop-before",
+      "filename": "animal-puzzle-spatial-crop-before-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 139
+    },
+    {
+      "name": "animal-puzzle-spatial-crop-after",
+      "filename": "animal-puzzle-spatial-crop-after-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 141
+    },
+    {
+      "name": "animal-puzzle-spatial-M03",
+      "filename": "animal-puzzle-spatial-M03-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 280
+    },
+    {
+      "name": "animal-puzzle-spatial-M04",
+      "filename": "animal-puzzle-spatial-M04-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 420
+    },
+    {
+      "name": "hero-H04",
+      "filename": "hero-H04-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "hero-overlap-middle",
+      "filename": "hero-overlap-middle-1920x1080.html",
+      "width": 1920,
+      "height": 1080,
+      "time": 140
+    },
+    {
+      "name": "hero-handoff-before",
+      "filename": "hero-handoff-before-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "hero-handoff-after",
+      "filename": "hero-handoff-after-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "hero-final",
+      "filename": "hero-final-1920x1080.html",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "name": "robot-cat-static",
+      "filename": "robot-cat-static-390x844.html",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "animal-puzzle-static",
+      "filename": "animal-puzzle-static-390x844.html",
+      "width": 390,
+      "height": 844
+    }
+  ]
+}

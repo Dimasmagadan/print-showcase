@@ -1,0 +1,59 @@
+---
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+const base = import.meta.env.BASE_URL;
+const inlineAsset = (name: string) => `data:image/webp;base64,${readFileSync(resolve(process.cwd(), `public/media/robot-cat-playground/${name}.webp`)).toString("base64")}`;
+const headSheet = inlineAsset("heads");
+const fallbackCart = inlineAsset("cat-cart-tail");
+const heads = [['cat', 'Кот'], ['bunny', 'Заяц'], ['duck', 'Утка'], ['dog', 'Собака']];
+---
+<section class="playground" id="robot-playground" aria-labelledby="playground-title" style={`--sheet:url(${headSheet})`}>
+  <h2 id="playground-title">Собери своего робота</h2>
+  <p data-playground-intro hidden>Выберите голову и корпус. Или поставьте голову на тележку и попробуйте её покатать.</p>
+  <p data-playground-fallback-intro>Четыре сменные головы подходят к корпусу с хвостом или без него. Каждую голову можно поставить на отдельную тележку.</p>
+  <div class="playground-app" hidden data-media={`${base}media/robot-cat-playground/`}>
+    <div class="playground-layout">
+      <div class="playground-visual">
+        <div class="playground-stage" tabindex="0" role="img" aria-label="Робот-кот с хвостом, собран" data-stage>
+          <div class="playground-model" data-model><canvas data-image width="800" height="800" aria-hidden="true"></canvas><canvas data-art width="800" height="800" aria-hidden="true"></canvas></div>
+          <span class="playground-render">рендер</span>
+        </div>
+        <div class="playground-actions"><button type="button" data-action="explode">Как соединяется</button><button type="button" data-action="editor">Нарисовать на животе</button></div>
+        <div class="playground-roll" hidden><p>Потяните вбок и отпустите — или нажмите кнопку под сценой.</p><button type="button" data-roll="-1">Катнуть влево</button><button type="button" data-roll="1">Катнуть вправо</button><button type="button" data-roll="0">Остановить</button></div>
+        <div data-cart-copy hidden><h3>А вот и колёсики</h3><p>Для головы я сделал отдельную тележку с четырьмя колёсами. На ней такой же штырь, как на корпусе: голову можно переставить с робота на базу. Корпус и ноги здесь не нужны.</p></div>
+        <p data-description></p><p data-extra></p>
+        <p class="playground-error" hidden>Не получилось загрузить этот вариант. Попробуйте ещё раз. <button type="button" data-retry>Повторить</button></p>
+        <p class="playground-live" aria-live="polite" data-live></p>
+      </div>
+      <div class="playground-options">
+        <fieldset><legend>Голова</legend><div class="playground-heads">{heads.map(([id, label], i) => <button type="button" data-select="head" data-value={id} aria-pressed={id === 'cat' ? 'true' : 'false'}><span class="playground-head-thumb" aria-hidden="true" style={`--thumb-position:${i * 100 / 3}%`}></span>{label}</button>)}</div></fieldset>
+        <fieldset><legend>Сборка</legend><div class="playground-buttons"><button type="button" data-select="mode" data-value="robot" aria-pressed="true">Робот</button><button type="button" data-select="mode" data-value="cart" aria-pressed="false">Тележка</button></div></fieldset>
+        <fieldset data-body-options><legend>Корпус</legend><div class="playground-buttons"><button type="button" data-select="body" data-value="tail" aria-pressed="true">С хвостом</button><button type="button" data-select="body" data-value="plain" aria-pressed="false">Без хвоста</button></div></fieldset>
+      </div>
+    </div>
+    <div class="playground-editor" hidden role="dialog" aria-modal="true" aria-labelledby="playground-editor-title">
+      <div class="playground-editor-panel"><h3 id="playground-editor-title">Рисунок на животе</h3><p>Рисуйте в рамке или выберите готовый рисунок.</p><canvas data-editor-canvas width="500" height="500" aria-label="Поле для рисования"></canvas>
+      <div class="playground-colors" aria-label="Цвет маркера">{[['#222222','Чёрный'],['#d63842','Красный'],['#176bb0','Синий'],['#187c54','Зелёный'],['#e09013','Оранжевый']].map(([color,label]) => <button type="button" data-color={color} aria-label={label} aria-pressed={color === '#222222' ? 'true' : 'false'} style={`--swatch:${color}`}></button>)}<button type="button" data-tool="eraser" aria-pressed="false">Ластик</button></div>
+      <p>Или выберите готовый рисунок</p><div class="playground-editor-actions"><button type="button" data-template="heart">Сердце</button><button type="button" data-template="star">Звезда</button><button type="button" data-template="smile">Улыбка</button></div>
+      <div class="playground-editor-actions"><button type="button" data-action="undo">Отменить штрих</button><button type="button" data-action="clear">Очистить</button><button type="button" data-action="done">Готово</button></div></div>
+    </div>
+  </div>
+  <div class="playground-fallback">
+    <p class="playground-error" data-initial-error hidden role="status">Не получилось загрузить этот вариант. Попробуйте ещё раз. <button type="button" data-initial-retry>Повторить</button></p>
+    <div class="playground-characters">
+      {heads.map(([id, label], i) => <figure><span class="playground-head-thumb" role="img" aria-label={`Рендер: голова ${label.toLowerCase()}`} style={`--thumb-position:${i * 100 / 3}%`}></span><figcaption>{label} · рендер</figcaption></figure>)}
+    </div>
+    <figure class="playground-cart"><img src={fallbackCart} alt="Рендер кошачьей головы на отдельной тележке с колёсами" loading="lazy" width="800" height="800" /><figcaption>На тележку ставится только голова · рендер</figcaption></figure>
+  </div>
+</section>
+<style>
+.playground{padding:clamp(3rem,7vw,6rem) 0}.playground h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.1;margin:0 0 1rem}.playground>p{max-width:52ch}.playground-characters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.playground figure{margin:0}.playground img{display:block;width:100%;height:auto;background:radial-gradient(ellipse at 50% 70%,#c3a17b22,transparent 65%)}.playground figcaption{color:#c6b8a8;font-size:.875rem}.playground-cart{max-width:300px;margin-top:2rem!important}@media(max-width:700px){.playground-characters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.playground button{min-height:44px;padding:.6rem .9rem;border:1px solid #9b8877;border-radius:.6rem;background:#28211f;color:#fff;font:inherit;cursor:pointer}.playground button:focus-visible,.playground-stage:focus-visible{outline:3px solid #ffbc36;outline-offset:3px}.playground button[aria-pressed="true"]{border:2px solid #ffbc36;background:#634732}.playground-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:clamp(1rem,4vw,3rem);align-items:start}.playground-stage{position:relative;overflow:hidden;aspect-ratio:1;background:radial-gradient(ellipse at 50% 70%,#c3a17b35,transparent 60%);touch-action:pan-y}.playground-stage:before{content:"";position:absolute;left:15%;right:15%;bottom:10%;height:8%;border-radius:50%;background:#0004;filter:blur(20px);transition:bottom .3s ease}.playground-stage[data-mode="cart"]:before{bottom:0}.playground-model{position:absolute;inset:0;will-change:transform}.playground-model img,.playground-model canvas{position:absolute;inset:0;width:100%;height:100%;background:none}.playground-render{position:absolute;left:1rem;bottom:1rem;font-size:.75rem}.playground-actions,.playground-roll,.playground-editor-actions,.playground-colors,.playground-buttons{display:flex;gap:.5rem;flex-wrap:wrap}.playground-options fieldset{border:0;padding:0;margin:0 0 1.5rem;min-width:0}.playground-options legend{font-weight:bold;margin-bottom:.75rem}.playground-heads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem}.playground .playground-heads button{padding:.25rem;min-width:0;background:transparent;border-color:transparent}.playground .playground-heads button[aria-pressed="true"]{background:transparent;border-color:#ffbc36}.playground-head-thumb{display:block;width:auto;height:100px;aspect-ratio:125/170;margin:auto;background-image:var(--sheet);background-size:400% 100%;background-position:var(--thumb-position) 0;background-repeat:no-repeat}.playground-live{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.playground-editor{position:fixed;z-index:100;inset:0;overflow:auto;background:#000b;display:grid;place-items:center;padding:1rem}.playground-editor[hidden],.playground-app[hidden],.playground-roll[hidden],.playground-error[hidden],.playground-fallback[hidden]{display:none}.playground-editor-panel{width:min(100%,600px);padding:1.5rem;background:#29221f;border:1px solid #9b8877;border-radius:1rem}.playground-editor-panel canvas{display:block;width:min(100%,400px);height:auto;aspect-ratio:1;background:#f8f3df;border:10px solid #cfc4ab;touch-action:none;cursor:crosshair;margin-bottom:1rem}.playground-colors button[data-color]{width:44px;background:var(--swatch)}.playground-editor-actions{margin-top:.75rem}.playground-error{color:#ffcc9f}@media(prefers-reduced-motion:reduce){.playground-stage:before{transition:none}}@media(max-width:800px){.playground-layout{display:flex;flex-direction:column}.playground-visual{display:contents}.playground-stage{order:0;width:100%}.playground-options{order:1;width:100%}.playground-actions{order:2}.playground-roll{order:3}.playground-visual>p,.playground-visual>[data-cart-copy]{order:4}.playground-heads{grid-template-columns:repeat(2,minmax(0,1fr))}.playground-head-thumb{height:80px}}
+</style>
+
+<script>
+  import { initPlayground } from '../scripts/robot-cat-playground.mjs';
+  const root = document.querySelector('#robot-playground');
+  if (root) initPlayground(root);
+</script>

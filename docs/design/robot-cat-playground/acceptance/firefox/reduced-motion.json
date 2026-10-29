@@ -1,0 +1,78 @@
+[
+  {
+    "appHidden": false,
+    "description": "Кот, робот с хвостом, собран",
+    "height": 844,
+    "overflow": false,
+    "stage": {
+      "bottom": 550.8000030517578,
+      "height": 350,
+      "left": 20,
+      "right": 370,
+      "top": 200.8000030517578,
+      "width": 350,
+      "x": 20,
+      "y": 200.8000030517578
+    },
+    "width": 390,
+    "drawingSurvived": true,
+    "peakDecodedBytes": 3276800
+  },
+  {
+    "appHidden": false,
+    "description": "Кот, робот с хвостом, собран",
+    "height": 1024,
+    "overflow": false,
+    "stage": {
+      "bottom": 883.5,
+      "height": 704,
+      "left": 32,
+      "right": 736,
+      "top": 179.5,
+      "width": 704,
+      "x": 32,
+      "y": 179.5
+    },
+    "width": 768,
+    "drawingSurvived": true,
+    "peakDecodedBytes": 3276800
+  },
+  {
+    "appHidden": false,
+    "description": "Кот, робот с хвостом, собран",
+    "height": 900,
+    "overflow": false,
+    "stage": {
+      "bottom": 1028.7999725341797,
+      "height": 777.5999755859375,
+      "left": 48,
+      "right": 825.5999755859375,
+      "top": 251.1999969482422,
+      "width": 777.5999755859375,
+      "x": 48,
+      "y": 251.1999969482422
+    },
+    "width": 1440,
+    "drawingSurvived": true,
+    "peakDecodedBytes": 3276800
+  },
+  {
+    "appHidden": false,
+    "description": "Кот, робот с хвостом, собран",
+    "height": 1080,
+    "overflow": false,
+    "stage": {
+      "bottom": 1028.7999725341797,
+      "height": 777.5999755859375,
+      "left": 288,
+      "right": 1065.5999755859375,
+      "top": 251.1999969482422,
+      "width": 777.5999755859375,
+      "x": 288,
+      "y": 251.1999969482422
+    },
+    "width": 1920,
+    "drawingSurvived": true,
+    "peakDecodedBytes": 3276800
+  }
+]

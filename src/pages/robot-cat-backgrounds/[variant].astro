@@ -1,0 +1,130 @@
+---
+import { getImage, Image } from "astro:assets";
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import RobotCatBackground from "../../components/RobotCatBackground.astro";
+import RobotCatStory from "../../components/RobotCatStory.astro";
+import { SITE } from "../../config";
+import { formatDate, getModels, videoEmbed } from "../../lib";
+
+export async function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+  const model = (await getModels()).find(model => model.id === 'robot-cat');
+  return ['studio', 'aurora', 'blueprint', 'orbits'].map(variant => ({ params: { variant }, props: { model, variant } }));
+}
+
+const { model, variant } = Astro.props;
+const { data } = model;
+const { Content } = await render(model);
+const base = import.meta.env.BASE_URL;
+
+const og = `${base}og/${model.id}.jpg`;
+const full = await Promise.all(data.gallery.map((g) => getImage({ src: g.src, width: 2000 })));
+
+const specLabels: [keyof typeof data.specs, string][] = [
+  ["material", "Материал"],
+  ["size", "Размер"],
+  ["parts", "Деталей"],
+  ["layer", "Слой"],
+  ["printTime", "Время печати"],
+];
+const specs = specLabels.filter(([k]) => data.specs[k] !== undefined);
+const embed = data.video ? videoEmbed(data.video) : null;
+// https://t.me/<канал>/<id> → "<канал>/<id>" для виджета обсуждений
+const tgDiscussion = data.tgPost?.match(/t\.me\/([^/]+\/\d+)/)?.[1];
+const localVideo = data.video && !embed ? `${base}${data.video.replace(/^\//, "")}` : null;
+---
+<Base title={data.title} description={data.summary} image={og} imageAlt={data.coverAlt} type="article">
+  <link slot="head" rel="expect" blocking="render" href="#model-cover" />
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  <RobotCatBackground variant={variant} showPicker />
+  <article class="wrap" data-model-page={model.id} data-cover-key={data.cover.src}>
+    <header class="model-head">
+      <a class="back" href={`${base}#models`}>← Все модели</a>
+      <h1><span data-model-title>{data.title}</span></h1>
+      <p class="lead">{data.summary}</p>
+      <ul class="tags">
+        <li>{formatDate(data.date)}</li>
+        {data.tags.map((t) => <li>{t}</li>)}
+      </ul>
+    </header>
+
+    <div class="cover" id="model-cover">
+      <Image src={data.cover} alt={data.coverAlt} widths={[800, 1400, 2000]} sizes="(max-width: 1120px) 100vw, 1088px" loading="eager" />
+    </div>
+
+    {model.id === 'robot-cat' ? <RobotCatStory specs={data.specs} specLabels={specLabels} tgPost={data.tgPost} /> : <div class="model-layout">
+      <div class="prose"><Content /></div>
+      <aside class="aside">
+        {specs.length > 0 && (
+          <dl class="specs">
+            {specs.map(([k, label]) => (
+              <div><dt>{label}</dt><dd>{data.specs[k]}</dd></div>
+            ))}
+          </dl>
+        )}
+        {SITE.contact && <a class="btn" href={SITE.contact} target="_blank" rel="noopener">Связаться</a>}
+        {data.tgPost && <a class="btn btn-ghost" href={data.tgPost} target="_blank" rel="noopener">Обсудить в канале</a>}
+      </aside>
+    </div>}
+
+    {data.video && (
+      <section>
+        <h2 class="section-title">Печать</h2>
+        <div class="video">
+          {embed
+            ? <iframe src={embed} title={`Видео печати: ${data.title}`} allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            : <video src={localVideo} controls playsinline preload="metadata" muted></video>}
+        </div>
+      </section>
+    )}
+
+    {data.gallery.length > 0 && (
+      <section>
+        <h2 class="section-title">{data.gallery.some((g) => g.kind === "photo") ? "Фото" : "Рендеры"}</h2>
+        <div class="gallery">
+          {data.gallery.map((g, i) => (
+            <button type="button" data-full={full[i].src} data-alt={g.alt} aria-label={`Открыть: ${g.alt}`}>
+              <Image class={`fit-${g.kind === "render" ? "contain" : "cover"}`} src={g.src} alt={g.alt} widths={[300, 600]} sizes="(max-width: 600px) 100vw, 270px" />
+              {g.kind === "render" && <span class="badge">рендер</span>}
+            </button>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {tgDiscussion && (
+      <section>
+        <h2 class="section-title">Комментарии</h2>
+        <div class="comments">
+          <script is:inline async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-discussion={tgDiscussion} data-comments-limit="10" data-dark="1"></script>
+        </div>
+      </section>
+    )}
+
+    {SITE.contact && <section class="cta">
+      <div>
+        <h2>Есть похожая задача?</h2>
+        <p>Напишите — обсудим, можно ли сделать что-то под вас.</p>
+      </div>
+      <a class="btn" href={SITE.contact} target="_blank" rel="noopener">Связаться</a>
+    </section>}
+  </article>
+
+  <dialog class="lightbox" id="lightbox"><img alt="" /></dialog>
+  <script>
+    const dialog = document.getElementById("lightbox") as HTMLDialogElement;
+    const img = dialog.querySelector("img")!;
+    let opener: HTMLButtonElement | null = null;
+    document.querySelectorAll<HTMLButtonElement>(".gallery button").forEach((btn) =>
+      btn.addEventListener("click", () => {
+        opener = btn;
+        img.src = btn.dataset.full!;
+        img.alt = btn.dataset.alt!;
+        dialog.showModal();
+      }),
+    );
+    dialog.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("close", () => opener?.focus({ preventScroll: true }));
+  </script>
+</Base>

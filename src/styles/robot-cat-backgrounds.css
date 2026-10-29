@@ -1,0 +1,54 @@
+/* Studio is the selected Robot Cat background; other variants remain dev studies. */
+body:has(.cat-background) { background:#11121b; isolation:isolate; }
+.cat-background { position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:var(--back); }
+.robot-cat-story .story-stage > .cat-background { position:absolute;z-index:auto; }
+.cat-background > div { position:absolute;pointer-events:none; }
+.bg-wash { inset:-18%;background:var(--wash);animation:cat-wash 22s ease-in-out infinite alternate;will-change:transform; }
+.bg-grain { inset:0;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23ffffff' filter='url(%23n)' opacity='.24' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
+[data-background="studio"] { --back:#231a1b;--wash:radial-gradient(ellipse at 80% 45%,#b375384d,transparent 48%),radial-gradient(ellipse at 15% 15%,#a2453c4d,transparent 50%),radial-gradient(ellipse at 55% 110%,#555b703d,transparent 60%); }
+[data-background="studio"] .bg-orbit { width:70vw;height:70vw;right:-25vw;top:-40vw;border:1px solid #e8bf7c18;border-radius:50%;box-shadow:0 0 0 7vw #e8bf7c04,0 0 0 14vw #e8bf7c04;animation:cat-breathe 18s ease-in-out infinite alternate; }
+[data-background="studio"] .orbit-two,[data-background="studio"] .orbit-three { display:none; }
+[data-background="aurora"] { --back:#15192b;--wash:radial-gradient(ellipse at 75% 30%,#754ac570,transparent 48%),radial-gradient(ellipse at 85% 85%,#23859a55,transparent 50%),radial-gradient(ellipse at 0% 60%,#41449050,transparent 55%); }
+[data-background="aurora"] .bg-orbit { border-radius:50%;filter:blur(48px);opacity:.25;animation:cat-aurora 25s ease-in-out infinite alternate; }
+[data-background="aurora"] .orbit-one { width:100vw;height:28vw;background:#6e70e8;right:-30vw;top:5%;transform:rotate(-35deg); }
+[data-background="aurora"] .orbit-two { width:65vw;height:18vw;background:#25b3ad;right:-20vw;bottom:0;animation-delay:-12s; }
+[data-background="blueprint"] { --back:#142530;--wash:radial-gradient(ellipse at 70% 45%,#30697860,transparent 58%),radial-gradient(ellipse at 5% 90%,#496d8540,transparent 60%); }
+[data-background="blueprint"] .bg-grid { inset:-80px;background-image:linear-gradient(#7ebbc50d 1px,transparent 1px),linear-gradient(90deg,#7ebbc50d 1px,transparent 1px),linear-gradient(#7ebbc509 1px,transparent 1px),linear-gradient(90deg,#7ebbc509 1px,transparent 1px);background-size:80px 80px,80px 80px,20px 20px,20px 20px;animation:cat-grid 28s linear infinite;mask-image:linear-gradient(90deg,#0009,#000); }
+[data-background="blueprint"] .bg-orbit { width:62vw;height:62vw;border:1px dashed #9ce5ed24;border-radius:50%;right:-14vw;top:8%;animation:cat-turn 150s linear infinite; }
+[data-background="blueprint"] .orbit-two { width:48vw;height:48vw;right:-7vw;top:calc(8% + 7vw);animation-direction:reverse;border-style:solid;border-color:#9ce5ed12; }
+[data-background="blueprint"] .orbit-three { display:none; }
+[data-background="orbits"] { --back:#221d30;--wash:radial-gradient(ellipse at 80% 70%,#86506e50,transparent 50%),radial-gradient(ellipse at 10% 0%,#535ba84d,transparent 55%); }
+[data-background="orbits"] .bg-orbit { width:65vw;height:65vw;right:-10vw;top:5%;border:1px solid #d6b4ff38;border-radius:50%;box-shadow:0 0 60px #a47be50a,inset 0 0 60px #a47be508;animation:cat-orbit 24s ease-in-out infinite alternate; }
+[data-background="orbits"] .bg-orbit::after { content:'';position:absolute;width:10px;height:10px;left:14.5%;top:14.5%;background:#e4a45b;border-radius:50%;box-shadow:0 0 22px #ffb85c99; }
+[data-background="orbits"] .orbit-two { width:83vw;height:83vw;right:-19vw;top:calc(5% - 9vw);animation-delay:-8s;border-color:#e0b47a20; }
+[data-background="orbits"] .orbit-three { width:101vw;height:101vw;right:-28vw;top:calc(5% - 18vw);animation-delay:-16s;border-color:#91c4ff20; }
+/* The delivered WebPs have a baked dark matte. Lighten lets backgrounds show
+   through that matte while preserving the bright model, without new frame assets. */
+body:has(.cat-background) .robot-cat-story .story-space > canvas,
+body:has(.cat-background) .robot-cat-story .beat-media picture { mix-blend-mode:lighten; }
+body:has(.cat-background) .robot-cat-story .beat-media { isolation:auto; }
+body:has(.cat-background) .lead,body:has(.cat-background) .beat-copy p { color:#dedde5; }
+body:has(.cat-background) .story-beat h2 { text-shadow:0 2px 28px #10101c70; }
+body:has(.cat-background) .site-header { background:#13131b66; }
+.background-picker { position:fixed;z-index:30;left:50%;bottom:18px;transform:translateX(-50%);max-width:calc(100vw - 24px);display:flex;align-items:center;gap:4px;padding:7px;border:1px solid #ffffff24;border-radius:14px;background:#15151eee;box-shadow:0 12px 40px #0005;backdrop-filter:blur(16px);font-size:12px;white-space:nowrap; }
+.background-picker a,.background-picker button { padding:9px 12px;border-radius:8px;text-decoration:none;color:#c7c7d2; }
+.background-picker a span { color:#81818f;margin-right:5px;font-size:10px; }
+.background-picker a[aria-current] { color:#fff;background:#ffffff18; }
+.background-picker a[aria-current] span { color:#ffbc36; }
+.background-picker a:hover,.background-picker button:hover { background:#ffffff12;color:#fff; }
+.background-picker button { border:1px solid #ffffff24;background:transparent;font:inherit;cursor:pointer; }
+.picker-caption { padding:0 12px;font-size:9px;letter-spacing:.12em;color:#9393a3; }
+@keyframes cat-wash { to { transform:translate(-5%,4%) scale(1.12) rotate(6deg); } }
+@keyframes cat-breathe { to { transform:translate(5%,10%) scale(1.12); } }
+@keyframes cat-aurora { to { transform:translate(-15%,18%) rotate(-18deg) scale(1.2); } }
+@keyframes cat-grid { to { transform:translate(80px,80px); } }
+@keyframes cat-turn { to { transform:rotate(360deg); } }
+@keyframes cat-orbit { from { transform:rotate(-25deg) translateY(-2%); } to { transform:rotate(45deg) translateY(4%); } }
+.cat-background.is-paused > div { animation-play-state:paused; }
+@media(prefers-reduced-motion:reduce) { .cat-background > div { animation:none;will-change:auto; } }
+@media(max-width:760px) { .background-picker { flex-wrap:wrap;justify-content:center;width:max-content;bottom:8px;gap:1px;padding:5px; } .picker-caption { display:none; } .background-picker a,.background-picker button { padding:6px 8px;font-size:11px; } .picker-original { display:none; } .background-picker a span { display:none; } .bg-orbit { min-width:90vw;min-height:90vw; } }
+
+.background-pause { position:static;display:inline-flex;margin-top:12px;min-height:44px;padding:10px 14px;border:1px solid #ffffff24;border-radius:10px;background:#15151eee;color:#dedde5;font:inherit;font-size:12px;cursor:pointer; }
+.background-pause[hidden] { display:none; }
+.background-pause:focus-visible { outline:2px solid var(--accent);outline-offset:3px; }
+@media(prefers-reduced-motion:reduce) { .background-pause { display:none; } }

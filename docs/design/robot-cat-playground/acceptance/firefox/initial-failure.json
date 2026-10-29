@@ -1,0 +1,11 @@
+[
+  {
+    "appHidden": true,
+    "cartLoaded": true,
+    "fallbackVisible": true,
+    "retryVisible": true,
+    "thumbLoaded": true,
+    "failedRetryRestoresFocus": true,
+    "retryRestoresFocus": true
+  }
+]

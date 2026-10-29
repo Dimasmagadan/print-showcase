@@ -1,0 +1,131 @@
+{
+  "backgroundPause": true,
+  "mediaFailureAndRetry": true,
+  "decodeFailureAndRetry": true,
+  "slowRequestLatestChoice": true,
+  "nativeHorizontalDrag": [
+    "translateX(0%) scale(1.5)",
+    "translateX(9.87637%) scale(1.5)"
+  ],
+  "horizontalTouchDrag": [
+    "translateX(9.87637%) scale(1.5)",
+    "translateX(18%) scale(1.5)"
+  ],
+  "touchProbe": {
+    "verticalCartStationary": true,
+    "scrollBefore": 8202,
+    "scrollAfter": 8202,
+    "events": [
+      {
+        "pointer": "touch",
+        "type": "pointerdown"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointermove"
+      },
+      {
+        "pointer": "touch",
+        "type": "pointerup"
+      }
+    ],
+    "touchAction": "pan-y",
+    "baselineScroll": 0
+  },
+  "focusedArrowKey": true,
+  "backgroundTab": {
+    "events": [
+      "hidden",
+      "visible"
+    ],
+    "stationaryAfterReturn": true
+  },
+  "nativeDrawingAndFocus": true,
+  "visibleProjectedDrawing": {
+    "changedPixels": 39,
+    "bounds": [
+      377,
+      474,
+      387,
+      481
+    ],
+    "blend": "normal"
+  },
+  "storyReverseFrames": [
+    48,
+    84,
+    24
+  ],
+  "reverseScrollAndDrawing": true,
+  "resizeNoOverflow": true,
+  "ownedDecodedMemory": {
+    "peak": 44800000,
+    "playground": 1638400,
+    "story": 0
+  },
+  "mediaRequestPeak": {
+    "at": [
+      "frames/000.webp",
+      "frames/001.webp",
+      "frames/002.webp"
+    ],
+    "count": 100,
+    "peak": 3
+  }
+}

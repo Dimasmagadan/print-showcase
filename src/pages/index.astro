@@ -1,28 +1,23 @@
 ---
 import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
-import { SITE } from "../config";
 import { getModels } from "../lib";
-import hero from "../assets/hero/bambu-p2s-hero-v1.png";
+import { HOME_FEATURED_MODEL_ID, orderHomeModels } from "../home-featured";
+import HomeMotionHead from "../components/HomeMotionHead.astro";
+import { homeFeaturedMedia } from "../home-featured-media";
+import HomeHero from "../components/HomeHero.astro";
 
-const models = await getModels();
+const { models, featured } = orderHomeModels(await getModels());
+if (!featured) {
+  console.warn(`[home] Published featured model "${HOME_FEATURED_MODEL_ID}" is unavailable; using the ordinary catalog.`);
+}
+const sceneEnabled = Boolean(featured && homeFeaturedMedia());
+if (featured && !sceneEnabled) console.warn(`[home] No reviewed media for "${HOME_FEATURED_MODEL_ID}"; using the static hero.`);
 const base = import.meta.env.BASE_URL;
 ---
 <Base home>
-  <section class="home-hero" aria-labelledby="hero-title">
-    <div class="hero-visual">
-      <Image src={hero} alt="Иллюстрация 3D-принтера Bambu Lab P2S с блоком AMS в тёмной мастерской" widths={[640, 960, 1280, 1672]} sizes="(min-width: 1024px) 900px, 100vw" loading="eager" fetchpriority="high" />
-    </div>
-    <div class="wrap hero-copy">
-      <p class="hero-eyebrow">Авторская 3D-печать</p>
-      <h1 id="hero-title">Придумываю и печатаю вещи</h1>
-      <p class="hero-description">{SITE.description} Здесь — как появилась каждая: идея, моделирование, печать и что пошло не так.</p>
-      <div class="hero-actions">
-        <a class="btn" href={`${base}#models`}>Смотреть модели</a>
-        {SITE.channel && <a class="btn btn-ghost" href={SITE.channel} target="_blank" rel="noopener">Telegram-канал</a>}
-      </div>
-    </div>
-  </section>
+  <HomeMotionHead slot="head" enabled={sceneEnabled} />
+  <HomeHero featuredTitle={featured?.data.title} />
 
   <section class="wrap home-models" id="models" aria-labelledby="models-title">
     <div class="catalog-heading">
@@ -32,11 +27,11 @@ const base = import.meta.env.BASE_URL;
     {models.length === 0 && <p class="empty">Первые модели скоро появятся.</p>}
     <div class="model-grid">
       {models.map((m) => (
-        <a class="model-card" href={`${base}models/${m.id}/`}>
+        <a class="model-card" data-model-id={m.id} data-cover-key={m.data.cover.src} data-motion-source="catalog" href={`${base}models/${m.id}/`}>
           <div class="model-card-image">
             <Image class={`fit-${m.data.coverFit}`} src={m.data.cover} alt={m.data.coverAlt} widths={[320, 480, 640]} sizes="(max-width: 767px) min(78vw, 320px), (max-width: 1023px) calc((100vw - 96px) / 3), (max-width: 1440px) calc((100vw - 156px) / 4), 321px" loading="lazy" />
           </div>
-          <h3>{m.data.title}</h3>
+          <h3><span data-model-title>{m.data.title}</span></h3>
           <p>{[m.data.specs.material, m.data.tags[0]].filter(Boolean).join(" · ")}</p>
         </a>
       ))}
